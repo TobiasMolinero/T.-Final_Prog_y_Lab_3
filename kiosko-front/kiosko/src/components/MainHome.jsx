@@ -2,6 +2,8 @@ import imagenVenta from '../assets/imagenVenta.png'
 import imagenProductos from '../assets/imagenProductos.png'
 import imagenEmpleados from '../assets/imagenEmpleados.png'
 import imagenClientes from '../assets/imagenClientes.png'
+import {ventas, productos, empleados, clientes} from '../constants/constants.js'
+import {Link} from 'react-router-dom'
 import '../CSS/MainHome.css'
 
 const MainHome = () => {
@@ -20,7 +22,7 @@ const MainHome = () => {
                   </figure>
                     <div className="card-body d-flex flex-column align-items-center">
                       <h5 className="card-title"><b className="text-bold">Ventas</b></h5>
-                      <button type='button' className='btn btn-danger botonesMain'>Ver</button>
+                      <button type='button' className='btn btn-danger botonesMain'><Link className='link-card' to={ventas}>Ver</Link></button>
                     </div>
                 </div>
               </div>
@@ -31,7 +33,7 @@ const MainHome = () => {
                   </figure>
                     <div className="card-body d-flex flex-column align-items-center">
                       <h5 className="card-title"><b className="text-bold">Productos</b></h5>
-                      <button type='button' className='btn btn-danger botonesMain'>Ver</button>
+                      <button type='button' className='btn btn-danger botonesMain'><Link className='link-card' to={productos}>Ver</Link></button>
                     </div>
                 </div>
               </div>
@@ -42,7 +44,7 @@ const MainHome = () => {
                   </figure>
                     <div className="card-body d-flex flex-column align-items-center">
                       <h5 className="card-title"><b className="text-bold">Empleados</b></h5>
-                      <button type='button' className='btn btn-danger botonesMain'>Ver</button>
+                      <button type='button' className='btn btn-danger botonesMain'><Link className='link-card' to={empleados}>Ver</Link></button>
                     </div>
                 </div>
               </div>
@@ -53,7 +55,7 @@ const MainHome = () => {
                   </figure>
                     <div className="card-body d-flex flex-column align-items-center">
                       <h5 className="card-title"><b className="text-bold">Clientes</b></h5>
-                      <button type='button' className='btn btn-danger botonesMain'>Ver</button>
+                      <button type='button' className='btn btn-danger botonesMain'><Link className='link-card' to={clientes}>Ver</Link></button>
                     </div>
                 </div>
               </div>

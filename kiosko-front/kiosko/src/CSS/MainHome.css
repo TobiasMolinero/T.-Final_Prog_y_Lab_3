@@ -5,6 +5,7 @@
 .tituloMain{
     font-family: 'Passion One', cursive;
     font-size: 3.3rem;
+    filter: drop-shadow(3px 2px 1px rgb(0 0 0 / 25%))
 }
 
 .subTituloMain{
@@ -41,4 +42,14 @@
     margin-top: 15px;
     padding: 3px 15px;
     background-color: #FF2E11;
+}
+
+.link-card{
+    text-decoration: none;
+    color: white;
+}
+
+.link-card:hover{
+    text-decoration: none;
+    color: white;
 }

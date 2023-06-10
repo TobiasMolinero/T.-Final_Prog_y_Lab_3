@@ -1,7 +1,4 @@
-body{
-    background-image: url('../assets/fondo.png');
-    background-size: contain;
-}
+
 
 
 header{
@@ -21,13 +18,18 @@ header{
     transition: 0.5s;
 }
 
+.navbar{
+    display: flex;
+    justify-content: space-between;
+}
+
 .logo{
     max-width: 200px;
     max-height: 300px;
 }
 
 .nav-link{
-    font-family: 'Oxygen', sans-serif;;
+    font-family: 'Oxygen', sans-serif;
     color: black;
 }
 
@@ -42,7 +44,7 @@ header{
 .dropdown-item:hover{
     color: white;
     background-color: #FF2E11;
-}
+} 
 
 .cerrarSesion{
     font-size: 1rem;

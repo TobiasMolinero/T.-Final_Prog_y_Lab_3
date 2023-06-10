@@ -1,2 +1,6 @@
 export const login = "/"
 export const home = "/home"
+export const ventas = "/ventas"
+export const productos = "/productos"
+export const empleados = "/empleados"
+export const clientes = "/clientes"
