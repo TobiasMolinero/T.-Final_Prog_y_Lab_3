@@ -1,0 +1,62 @@
+body{
+    background-image: url('../assets/fondo.png');
+    background-size: contain;
+}
+
+
+header{
+    font-size: 1.4rem;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.header-active{
+    background-color: #a5f063;
+    transition: 0.5s;
+}
+
+.header-inactive{
+    background: transparent;
+    transition: 0.5s;
+}
+
+.logo{
+    max-width: 200px;
+    max-height: 300px;
+}
+
+.nav-link{
+    font-family: 'Oxygen', sans-serif;;
+    color: black;
+}
+
+.nav-link:hover{
+    color: #FF2E11;
+}
+
+.dropdown-menu{
+    background-color: #a5f063;
+}
+
+.dropdown-item:hover{
+    color: white;
+    background-color: #FF2E11;
+}
+
+.cerrarSesion{
+    font-size: 1rem;
+    background-color: #FF2E11;
+    color: white;
+    width: 128px;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.cerrarSesion:hover{
+    background-color: #c92b16;
+}
+
+.cerrarSesion:active{
+    background-color: #FF2E11;
+}
