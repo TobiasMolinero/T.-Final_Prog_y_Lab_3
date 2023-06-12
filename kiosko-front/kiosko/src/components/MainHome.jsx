@@ -1,12 +1,14 @@
+import {ventas, productos, empleados, clientes} from '../constants/constants.js'
+import {Link} from 'react-router-dom'
 import imagenVenta from '../assets/imagenVenta.png'
 import imagenProductos from '../assets/imagenProductos.png'
 import imagenEmpleados from '../assets/imagenEmpleados.png'
 import imagenClientes from '../assets/imagenClientes.png'
-import {ventas, productos, empleados, clientes} from '../constants/constants.js'
-import {Link} from 'react-router-dom'
 import '../CSS/MainHome.css'
 
+
 const MainHome = () => {
+
   return (
     <main>
       <div className="container p-5">

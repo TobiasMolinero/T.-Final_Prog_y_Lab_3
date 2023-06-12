@@ -23,7 +23,7 @@ const Header = () => {
   const handleClick = () => {
     navigate('/')
   }
-
+  
   return (
     <header className='header-active'>
       <nav className="navbar navbar-expand-lg">
