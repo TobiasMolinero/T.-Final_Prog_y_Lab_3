@@ -1,20 +1,15 @@
-/* .main-ventas{
-    border-bottom: 1px solid black;
-} */
-
-
-.titulo-ventas{
+.titulo-empleados{
     font-family: 'Passion One', cursive;
     font-size: 3rem;
     filter: drop-shadow(3px 2px 1px rgb(0 0 0 / 25%));
 }
 
-.modal-body-ventas{
+.modal-body-empleados{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.modal-header-ventas{
+.modal-header-empleados{
     background: #a5f063;
 }

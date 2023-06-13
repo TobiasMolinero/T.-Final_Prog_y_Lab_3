@@ -1,20 +1,15 @@
-/* .main-ventas{
-    border-bottom: 1px solid black;
-} */
-
-
-.titulo-ventas{
+.titulo-clientes{
     font-family: 'Passion One', cursive;
     font-size: 3rem;
     filter: drop-shadow(3px 2px 1px rgb(0 0 0 / 25%));
 }
 
-.modal-body-ventas{
+.modal-body-clientes{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.modal-header-ventas{
+.modal-header-clientes{
     background: #a5f063;
 }

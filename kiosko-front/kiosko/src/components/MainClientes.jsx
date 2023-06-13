@@ -1,10 +1,136 @@
+
+import '../CSS/MainClientes.css'
+
 const MainClientes = () => {
-    return (
-      <div>
-        MainClientes
+
+  // const clientes = [{ id: 1, nombre: 'Pedro', apellido: 'Pascal', telefono: '3815555555', domicilio: 'Chile' },
+  //                   {id:2, nombre: 'Manolo', apellido: 'Perez', telefono: '3815777777', domicilio: 'Bolivia'}]
+
+
+  return (
+    <div className='container p-4 main-clientes'>
+      <h1 className='titulo-clientes'>Clientes</h1>
+      <div className="row">
+        <div className="col-9">
+          <table className='table mt-4'>
+            <thead>
+              <tr>
+                <th scope='col'>#</th>
+                <th scope='col'>Nombre</th>
+                <th scope='col'>Apellido</th>
+                <th scope='col'>Telefono</th>
+                <th scope='col'>Domicilio</th>
+                <th scope='col'>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {/* {clientes.map(cliente =>
+                <tr key={cliente.id}>
+                  <th scope="row">{cliente.id}</th>
+                  <td>{cliente.nombre}</td>
+                  <td>{cliente.apellido}</td>
+                  <td>{cliente.telefono}</td>
+                  <td>{cliente.domicilio}</td>
+                  <td>
+                    <div className="btn-group" role="group" aria-label="Basic mixed styles example">
+                      <button type="button" className="btn btn-danger"><i className="bi bi-trash"></i></button>
+                      <button type="button" className="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdropEditar"><i className="bi bi-pencil-square"></i></button>
+                    </div>
+                  </td>
+                </tr>
+              )} */}
+            </tbody>
+          </table>
+        </div>
+        <div className="col-3">
+          <div className="col-12 d-flex justify-content-end mt-4">
+            <button className="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdropAgregar"><i className="bi bi-plus-circle me-2"></i>Agregar Cliente</button>
+          </div>
+        </div>
+
+        {/* MODAL-AGREGAR */}
+        <div className="modal fade" id="staticBackdropAgregar" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header modal-header-clientes">
+                <h2 className="modal-title fs-5" id="staticBackdropLabel">Agregar Cliente</h2>
+                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div className="modal-body modal-body-clientes">
+                <form>
+                  <div className='mb-3'>
+                    <label htmlFor="txtNombre" className='form-label me-3'>Nombre:</label>
+                    <input type="text" id="txtNombre" />
+                  </div>
+                  <div className='mb-3'>
+                    <label htmlFor="txtApellido" className='form-label me-3'>Apellido: </label>
+                    <input type="text" id="txtApellido" />
+                  </div>
+                  <div className='mb-3'>
+                    <label htmlFor="txtTelefono" className='form-label me-3'>Telefono: </label>
+                    <input type="text" id='txtTelefono' />
+                  </div>
+                  <div className='mb-3'>
+                    <label htmlFor="txtDomicilio" className='form-label me-3'>Domicilio: </label>
+                    <input type="text" id='txtDomicilio' />
+                  </div>
+                </form>
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" className="btn btn-success" data-bs-dismiss="modal">Guardar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* MODAL-AGREGAR */}
+
+        {/* MODAL-EDITAR */}
+        <div className="modal fade" id="staticBackdropEditar" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header bg-warning">
+                <h2 className="modal-title fs-5" id="staticBackdropLabel">Modificar Cliente</h2>
+                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div className="modal-body modal-body-clientes">
+                <form>
+                  {/* <div className='mb-3'>
+                    <label htmlFor="txtNombreG" className='form-label me-3'>Nombre:</label>
+                    <input type="text" id="txtNombreG" />
+                  </div>
+                  <div className='mb-3'>
+                    <label htmlFor="txtApellidoG" className='form-label me-3'>Apellido: </label>
+                    <input type="text" id="txtApellidoG" />
+                  </div>
+                  <div className='mb-3'>
+                    <label htmlFor="txtTelefonoG" className='form-label me-3'>Telefono: </label>
+                    <input type="text" id='txtTelefonoG' />
+                  </div>
+                  <div className='mb-3'>
+                    <label htmlFor="txtDomicilioG" className='form-label me-3'>Domicilio: </label>
+                    <input type="text" id='txtDomicilioG' />
+                  </div> */}
+                </form>
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" className="btn btn-warning" data-bs-dismiss="modal">Guardar Cambios</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* MODAL-EDITAR */}
+
       </div>
-    )
-  }
-  
-  export default MainClientes
-  
+    </div>
+  )
+}
+
+export default MainClientes
+
+
+
+// Iconos
+{/* <i class="bi bi-trash"></i> */}
+{/* <i class="bi bi-pencil-square"></i> */}
