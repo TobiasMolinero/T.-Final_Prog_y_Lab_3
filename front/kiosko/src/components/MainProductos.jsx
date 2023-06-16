@@ -1,6 +1,20 @@
 import '../CSS/MainProductos.css'
+import Swal from 'sweetalert2'
 
 const MainProductos = () => {
+
+  const handleGuardarProducto = () => {
+    Swal.fire({
+      icon: 'success',
+      title: 'Guardado',
+      text: 'El producto se guardó con exito.',
+      confirmButtonColor: '#a5f063',
+      showCloseButton: true,
+      timer: 2000,
+      timerProgressBar: true
+    })
+  }
+
   return (
     <div className="container p-4 main-productos">
       <h1 className="titulo-productos">Productos</h1>
@@ -58,7 +72,7 @@ const MainProductos = () => {
               </div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" className="btn btn-success" data-bs-dismiss="modal">Guardar</button>
+                <button type="button" className="btn btn-success" data-bs-dismiss="modal" onClick={handleGuardarProducto}>Guardar</button>
               </div>
             </div>
           </div>

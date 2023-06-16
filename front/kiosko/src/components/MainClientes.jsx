@@ -1,11 +1,22 @@
-
 import '../CSS/MainClientes.css'
+import Swal from 'sweetalert2'
 
 const MainClientes = () => {
 
   // const clientes = [{ id: 1, nombre: 'Pedro', apellido: 'Pascal', telefono: '3815555555', domicilio: 'Chile' },
   //                   {id:2, nombre: 'Manolo', apellido: 'Perez', telefono: '3815777777', domicilio: 'Bolivia'}]
 
+  const handleGuardarCliente = () => {
+    Swal.fire({
+      icon: 'success',
+      title: 'Guardado',
+      text: 'El registro del cliente se guardó con exito.',
+      confirmButtonColor: '#a5f063',
+      showCloseButton: true,
+      timer: 2000,
+      timerProgressBar: true
+    })
+  }
 
   return (
     <div className='container p-4 main-clientes'>
@@ -78,7 +89,7 @@ const MainClientes = () => {
               </div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" className="btn btn-success" data-bs-dismiss="modal">Guardar</button>
+                <button type="button" className="btn btn-success" data-bs-dismiss="modal" onClick={handleGuardarCliente}>Guardar</button>
               </div>
             </div>
           </div>

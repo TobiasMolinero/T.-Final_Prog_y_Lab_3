@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { home, ventas, productos, empleados, clientes } from '../constants/constants'
 import brand from '../assets/brand-header.png'
 import '../CSS/Header.css'
+import Swal from 'sweetalert2'
 // import { useState } from 'react'
 
 const Header = () => {
@@ -21,7 +22,20 @@ const Header = () => {
   const navigate = useNavigate()
 
   const handleClick = () => {
-    navigate('/')
+    Swal.fire({
+      icon: 'question',
+      text: '¿Está seguro que desea cerrar sesión?',
+      showCloseButton: true,
+      showCancelButton: true,
+      cancelButtonColor: 'grey',
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Aceptar',
+      confirmButtonColor: '#a5f063',
+    }).then((result) => {
+      if(result.isConfirmed){
+        navigate('/')
+      }
+    })
   }
   
   return (

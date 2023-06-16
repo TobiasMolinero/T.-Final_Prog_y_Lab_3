@@ -1,14 +1,49 @@
+/* eslint-disable no-unused-vars */
 import { useNavigate } from 'react-router-dom'
 import '../CSS/MainLogin.css'
+import { useState } from 'react'
+import Swal from 'sweetalert2'
 
 
 const MainLogin = () => {
 
   const navigate = useNavigate()
+  let [usuario, setUsuario] = useState('Tobias')
+  let [contraseña, setContrseña] = useState('hola')
+  let [tipoUsuario, setTipoUsuario] = useState('Administrador')
+  let [inputUsuario, setInputUsuario] = useState('')
+  let [inputContraseña, setInputContraseña] = useState('')
+
 
   const ingresar = (e) => {
-    e.preventDefault()
-    navigate('/home')
+    if(inputUsuario === usuario && inputContraseña === contraseña){
+      e.preventDefault()
+      navigate('/home')
+      setTimeout(() => {
+        Swal.fire({
+          title: 'Bienvenido ' + usuario,
+          icon: 'success',
+          text: 'Ingresaste como ' + tipoUsuario,
+          confirmButtonText: 'Aceptar',
+          confirmButtonColor: '#a5f063',
+          timer: 3000,
+          timerProgressBar: true,
+          showCloseButton: true
+        })
+      }, 100);
+    } else {
+      e.preventDefault()
+      Swal.fire({
+        title: 'Error',
+        text: 'Debe ingresar datos validos.',
+        icon: 'error',
+        confirmButtonColor: '#a5f063',
+        confirmButtonText: 'Aceptar',
+        timer: 3000,
+        timerProgressBar: true,
+        showCloseButton: true
+      })
+    }
   }
 
 
@@ -23,11 +58,11 @@ const MainLogin = () => {
             <form onSubmit={ingresar}>
               <div className="mb-3">
                 <label className="form-label">Usuario:</label>
-                <input type="text" className="form-control" required />
+                <input type="text" className="form-control" required onChange={(e) => setInputUsuario(e.target.value)}/>
               </div>
               <div className="mb-3">
                 <label className="form-label">Contraseña:</label>
-                <input type="text" className="form-control" required />
+                <input type="password" className="form-control" required onChange={(e) => setInputContraseña(e.target.value)}/>
               </div>
               <button type="submit" className="btn btn-primary">Ingresar</button>
             </form>

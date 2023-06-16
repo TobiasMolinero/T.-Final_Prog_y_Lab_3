@@ -1,11 +1,24 @@
 import '../CSS/MainVentas.css'
+import Swal from 'sweetalert2'
 
 const MainVentas = () => {
 
   let productos = [{id: 1, nombre: "Alfajor Aguila", precio: 300}]
 
+  const handleGuardarVenta = () => {
+    Swal.fire({
+      icon: 'success',
+      title: 'Guardado',
+      text: 'La venta se guardó con exito.',
+      confirmButtonColor: '#a5f063',
+      showCloseButton: true,
+      timer: 2000,
+      timerProgressBar: true
+    })
+  }
+
   return (
-    <div className="container p-4 main-ventas">
+    <div className="container p-4 mb-5 main-ventas">
       <h1 className="titulo-ventas">Ventas</h1>
       <div className="row">
         
@@ -14,7 +27,7 @@ const MainVentas = () => {
           <button className="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i className="bi bi-plus-circle me-2"></i>Agregar Venta</button>
         </div>
       </div>
-      <div className="row">
+      <div className="row mb-5">
         <div className="col-12">
           <table className="table mt-4">
             <thead>
@@ -89,7 +102,7 @@ const MainVentas = () => {
               </div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" className="btn btn-success" data-bs-dismiss="modal">Guardar</button>
+                <button type="button" className="btn btn-success" data-bs-dismiss="modal" onClick={handleGuardarVenta}>Guardar</button>
               </div>
             </div>
           </div>

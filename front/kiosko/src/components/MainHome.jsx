@@ -5,9 +5,11 @@ import imagenProductos from '../assets/imagenProductos.png'
 import imagenEmpleados from '../assets/imagenEmpleados.png'
 import imagenClientes from '../assets/imagenClientes.png'
 import '../CSS/MainHome.css'
-
+// import { useState } from 'react'
 
 const MainHome = () => {
+
+  
 
   return (
     <main>

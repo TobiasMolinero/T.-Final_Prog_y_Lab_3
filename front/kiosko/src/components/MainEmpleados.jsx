@@ -1,6 +1,20 @@
 import '../CSS/MainEmpleados.css'
+import Swal from 'sweetalert2'
 
 const MainEmpleados = () => {
+
+  const handleGuardarEmpleado= () => {
+    Swal.fire({
+      icon: 'success',
+      title: 'Guardado',
+      text: 'El registro del nuevo empleado se guardó con exito.',
+      confirmButtonColor: '#a5f063',
+      showCloseButton: true,
+      timer: 2000,
+      timerProgressBar: true
+    })
+  }
+
   return (
     <div className='container p-4 main-empleados'>
       <h1 className='titulo-empleados'>Empleados</h1>
@@ -58,7 +72,7 @@ const MainEmpleados = () => {
               </div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" className="btn btn-success" data-bs-dismiss="modal">Guardar</button>
+                <button type="button" className="btn btn-success" data-bs-dismiss="modal" onClick={handleGuardarEmpleado}>Guardar</button>
               </div>
             </div>
           </div>
