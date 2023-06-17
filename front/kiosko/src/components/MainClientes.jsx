@@ -3,8 +3,19 @@ import Swal from 'sweetalert2'
 
 const MainClientes = () => {
 
-  // const clientes = [{ id: 1, nombre: 'Pedro', apellido: 'Pascal', telefono: '3815555555', domicilio: 'Chile' },
-  //                   {id:2, nombre: 'Manolo', apellido: 'Perez', telefono: '3815777777', domicilio: 'Bolivia'}]
+  const clientes = [{ id: 1, nombre: 'Pedro', apellido: 'Pascal', telefono: '3815555555', domicilio: 'Chile' },
+                    {id:2, nombre: 'Manolo', apellido: 'Perez', telefono: '3815777777', domicilio: 'Bolivia'},
+                    {id:2, nombre: 'Manolo', apellido: 'Perez', telefono: '3815777777', domicilio: 'Bolivia'},
+                    {id:2, nombre: 'Manolo', apellido: 'Perez', telefono: '3815777777', domicilio: 'Bolivia'},
+                    {id:2, nombre: 'Manolo', apellido: 'Perez', telefono: '3815777777', domicilio: 'Bolivia'},
+                    {id:2, nombre: 'Manolo', apellido: 'Perez', telefono: '3815777777', domicilio: 'Bolivia'},
+                    {id:2, nombre: 'Manolo', apellido: 'Perez', telefono: '3815777777', domicilio: 'Bolivia'},
+                    {id:2, nombre: 'Manolo', apellido: 'Perez', telefono: '3815777777', domicilio: 'Bolivia'},
+                    {id:2, nombre: 'Manolo', apellido: 'Perez', telefono: '3815777777', domicilio: 'Bolivia'},
+                    {id:2, nombre: 'Manolo', apellido: 'Perez', telefono: '3815777777', domicilio: 'Bolivia'},
+                    {id:2, nombre: 'Manolo', apellido: 'Perez', telefono: '3815777777', domicilio: 'Bolivia'},
+                    {id:2, nombre: 'Manolo', apellido: 'Perez', telefono: '3815777777', domicilio: 'Bolivia'},
+                    {id:2, nombre: 'Manolo', apellido: 'Perez', telefono: '3815777777', domicilio: 'Bolivia'}]
 
   const handleGuardarCliente = () => {
     Swal.fire({
@@ -14,7 +25,33 @@ const MainClientes = () => {
       confirmButtonColor: '#a5f063',
       showCloseButton: true,
       timer: 2000,
-      timerProgressBar: true
+      timerProgressBar: true,
+    })
+  }
+
+  const handleBorrarCliente = () => {
+    Swal.fire({
+      icon: 'warning',
+      text: '¿Esta seguro que quiere borrar este registro?',
+      showCancelButton: true,
+      cancelButtonColor: 'grey',
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Borrar',
+      confirmButtonColor: '#FF2E11',
+      allowOutsideClick: false,
+      allowEnterKey: false,
+      allowEscapeKey: false,
+    }).then((result) => {
+      if(result.isConfirmed){
+        Swal.fire({
+          icon: 'success',
+          text: 'Se eliminó el registro con exito',
+          confirmButtonColor: '#a5f063',
+          timer: 2000,
+          timerProgressBar: true,
+          showCloseButton: true, 
+        })
+      }
     })
   }
 
@@ -35,7 +72,7 @@ const MainClientes = () => {
               </tr>
             </thead>
             <tbody>
-              {/* {clientes.map(cliente =>
+              {clientes.map(cliente =>
                 <tr key={cliente.id}>
                   <th scope="row">{cliente.id}</th>
                   <td>{cliente.nombre}</td>
@@ -44,12 +81,12 @@ const MainClientes = () => {
                   <td>{cliente.domicilio}</td>
                   <td>
                     <div className="btn-group" role="group" aria-label="Basic mixed styles example">
-                      <button type="button" className="btn btn-danger"><i className="bi bi-trash"></i></button>
+                      <button type="button" className="btn btn-danger" onClick={handleBorrarCliente}><i className="bi bi-trash"></i></button>
                       <button type="button" className="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdropEditar"><i className="bi bi-pencil-square"></i></button>
                     </div>
                   </td>
                 </tr>
-              )} */}
+              )}
             </tbody>
           </table>
         </div>
@@ -71,19 +108,19 @@ const MainClientes = () => {
                 <form>
                   <div className='mb-3'>
                     <label htmlFor="txtNombre" className='form-label me-3'>Nombre:</label>
-                    <input type="text" id="txtNombre" />
+                    <input type="text" id="txtNombre"/>
                   </div>
                   <div className='mb-3'>
                     <label htmlFor="txtApellido" className='form-label me-3'>Apellido: </label>
-                    <input type="text" id="txtApellido" />
+                    <input type="text" id="txtApellido"/>
                   </div>
                   <div className='mb-3'>
                     <label htmlFor="txtTelefono" className='form-label me-3'>Telefono: </label>
-                    <input type="text" id='txtTelefono' />
+                    <input type="text" id='txtTelefono'/>
                   </div>
                   <div className='mb-3'>
                     <label htmlFor="txtDomicilio" className='form-label me-3'>Domicilio: </label>
-                    <input type="text" id='txtDomicilio' />
+                    <input type="text" id='txtDomicilio'/>
                   </div>
                 </form>
               </div>

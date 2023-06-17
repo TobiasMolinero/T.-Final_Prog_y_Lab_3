@@ -3,6 +3,7 @@ import MainProductos from '../components/MainProductos'
 import Footer from '../components/Footer'
 
 const Productos = () => {
+
   return (
     <>
       <Header/>

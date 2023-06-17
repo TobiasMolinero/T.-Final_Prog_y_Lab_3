@@ -7,18 +7,6 @@ import Swal from 'sweetalert2'
 
 const Header = () => {
 
-  // const [navLink, setNavLink] = useState(false)
-  // const [header, setHeader] = useState(false)
-
-  // const changeBackground = () => {
-  //   if(window.scrollY >= 50){
-  //     setHeader(true)
-  //   } else {
-  //     setHeader(false)
-  //   }
-  // }
-
-  // window.addEventListener('scroll',changeBackground)
   const navigate = useNavigate()
 
   const handleClick = () => {
@@ -44,9 +32,6 @@ const Header = () => {
         <Link to={home}>
           <img src={brand} alt="logo" className='logo' />
         </Link>
-        {/* <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button> */}
         <div className="text-center" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
