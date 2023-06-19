@@ -3,20 +3,6 @@ import Swal from 'sweetalert2'
 
 const MainClientes = () => {
 
-  const clientes = [{ id: 1, nombre: 'Pedro', apellido: 'Pascal', telefono: '3815555555', domicilio: 'Chile' },
-                    {id:2, nombre: 'Manolo', apellido: 'Perez', telefono: '3815777777', domicilio: 'Bolivia'},
-                    {id:2, nombre: 'Manolo', apellido: 'Perez', telefono: '3815777777', domicilio: 'Bolivia'},
-                    {id:2, nombre: 'Manolo', apellido: 'Perez', telefono: '3815777777', domicilio: 'Bolivia'},
-                    {id:2, nombre: 'Manolo', apellido: 'Perez', telefono: '3815777777', domicilio: 'Bolivia'},
-                    {id:2, nombre: 'Manolo', apellido: 'Perez', telefono: '3815777777', domicilio: 'Bolivia'},
-                    {id:2, nombre: 'Manolo', apellido: 'Perez', telefono: '3815777777', domicilio: 'Bolivia'},
-                    {id:2, nombre: 'Manolo', apellido: 'Perez', telefono: '3815777777', domicilio: 'Bolivia'},
-                    {id:2, nombre: 'Manolo', apellido: 'Perez', telefono: '3815777777', domicilio: 'Bolivia'},
-                    {id:2, nombre: 'Manolo', apellido: 'Perez', telefono: '3815777777', domicilio: 'Bolivia'},
-                    {id:2, nombre: 'Manolo', apellido: 'Perez', telefono: '3815777777', domicilio: 'Bolivia'},
-                    {id:2, nombre: 'Manolo', apellido: 'Perez', telefono: '3815777777', domicilio: 'Bolivia'},
-                    {id:2, nombre: 'Manolo', apellido: 'Perez', telefono: '3815777777', domicilio: 'Bolivia'}]
-
   const handleGuardarCliente = () => {
     Swal.fire({
       icon: 'success',
@@ -29,31 +15,31 @@ const MainClientes = () => {
     })
   }
 
-  const handleBorrarCliente = () => {
-    Swal.fire({
-      icon: 'warning',
-      text: '¿Esta seguro que quiere borrar este registro?',
-      showCancelButton: true,
-      cancelButtonColor: 'grey',
-      cancelButtonText: 'Cancelar',
-      confirmButtonText: 'Borrar',
-      confirmButtonColor: '#FF2E11',
-      allowOutsideClick: false,
-      allowEnterKey: false,
-      allowEscapeKey: false,
-    }).then((result) => {
-      if(result.isConfirmed){
-        Swal.fire({
-          icon: 'success',
-          text: 'Se eliminó el registro con exito',
-          confirmButtonColor: '#a5f063',
-          timer: 2000,
-          timerProgressBar: true,
-          showCloseButton: true, 
-        })
-      }
-    })
-  }
+  // const handleBorrarCliente = () => {
+  //   Swal.fire({
+  //     icon: 'warning',
+  //     text: '¿Esta seguro que quiere borrar este registro?',
+  //     showCancelButton: true,
+  //     cancelButtonColor: 'grey',
+  //     cancelButtonText: 'Cancelar',
+  //     confirmButtonText: 'Borrar',
+  //     confirmButtonColor: '#FF2E11',
+  //     allowOutsideClick: false,
+  //     allowEnterKey: false,
+  //     allowEscapeKey: false,
+  //   }).then((result) => {
+  //     if(result.isConfirmed){
+  //       Swal.fire({
+  //         icon: 'success',
+  //         text: 'Se eliminó el registro con exito',
+  //         confirmButtonColor: '#a5f063',
+  //         timer: 2000,
+  //         timerProgressBar: true,
+  //         showCloseButton: true, 
+  //       })
+  //     }
+  //   })
+  // }
 
   return (
     <div className='container p-4 main-clientes'>
@@ -72,21 +58,7 @@ const MainClientes = () => {
               </tr>
             </thead>
             <tbody>
-              {clientes.map(cliente =>
-                <tr key={cliente.id}>
-                  <th scope="row">{cliente.id}</th>
-                  <td>{cliente.nombre}</td>
-                  <td>{cliente.apellido}</td>
-                  <td>{cliente.telefono}</td>
-                  <td>{cliente.domicilio}</td>
-                  <td>
-                    <div className="btn-group" role="group" aria-label="Basic mixed styles example">
-                      <button type="button" className="btn btn-danger" onClick={handleBorrarCliente}><i className="bi bi-trash"></i></button>
-                      <button type="button" className="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdropEditar"><i className="bi bi-pencil-square"></i></button>
-                    </div>
-                  </td>
-                </tr>
-              )}
+
             </tbody>
           </table>
         </div>

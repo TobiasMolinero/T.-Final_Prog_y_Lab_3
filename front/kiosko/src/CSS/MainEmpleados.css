@@ -1,3 +1,7 @@
+.main-empleados{
+    min-height: 510px;
+}
+
 .titulo-empleados{
     font-family: 'Passion One', cursive;
     font-size: 3rem;

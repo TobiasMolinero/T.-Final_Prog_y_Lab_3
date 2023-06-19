@@ -1,3 +1,7 @@
+.main-productos{
+    min-height: 550px;
+}
+
 .titulo-productos{
     font-family: 'Passion One', cursive;
     font-size: 3rem;
