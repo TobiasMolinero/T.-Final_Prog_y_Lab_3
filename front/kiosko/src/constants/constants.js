@@ -4,10 +4,7 @@ export const ventas = "/ventas"
 export const productos = "/productos"
 export const empleados = "/empleados"
 export const clientes = "/clientes"
-export const agregarVenta = '/agregarventa'
-export const agregarProducto = '/agregarproducto'
-export const agregarEmpleado = '/agregarempleado'
-export const agregarCliente = '/agregarcliente'
+export const editarProducto = '/editarProducto/'
 
 export const ventas_URL = 'http://localhost:3000/ventas/'
 export const productos_URL = 'http://localhost:3000/productos/'

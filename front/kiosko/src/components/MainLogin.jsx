@@ -13,6 +13,7 @@ const MainLogin = () => {
   let [tipoUsuario, setTipoUsuario] = useState('Administrador')
   let [inputUsuario, setInputUsuario] = useState('')
   let [inputContraseña, setInputContraseña] = useState('')
+  const [visible, setVisible] = useState(false)
 
 
   const ingresar = (e) => {
@@ -46,23 +47,27 @@ const MainLogin = () => {
     }
   }
 
+  const handleChangeVisibility = () => {
+    visible === false ? setVisible(true) : setVisible(false)
+  }
 
   return (
-    <div className="mainLogin">
-      <div className="container p-5">
+    <div>
+      <div className="container p-5 main-login">
         <div className="row d-flex justify-content-center">
           <h1 className="text-center tituloMain">KIOSKO LA ESQUINA</h1>
           <h2 className="text-center subTituloMain">Sistema de gestión</h2>
           <div className="col-6 mt-3 p-4 login">
             <h3 className="mb-4">Iniciar Sesión</h3>
             <form onSubmit={ingresar}>
-              <div className="mb-3">
+              <div className="mb-3 d-flex flex-row gap-2">
                 <label className="form-label">Usuario:</label>
                 <input type="text" className="form-control" required onChange={(e) => setInputUsuario(e.target.value)}/>
               </div>
-              <div className="mb-3">
-                <label className="form-label">Contraseña:</label>
-                <input type="password" className="form-control" required onChange={(e) => setInputContraseña(e.target.value)}/>
+              <div className="mb-3 d-flex flex-row gap-2">
+                <label className="form-label">Contraseña: </label>
+                <input type={visible === false ? 'password' : 'text'} className="form-control" required onChange={(e) => setInputContraseña(e.target.value)}/>
+                <i className={visible === false ? "bi bi-eye-slash-fill" : "bi bi-eye-fill"} onClick={handleChangeVisibility}></i>
               </div>
               <button type="submit" className="btn btn-primary">Ingresar</button>
             </form>
@@ -74,3 +79,6 @@ const MainLogin = () => {
 }
 
 export default MainLogin
+
+{/* <i class="bi bi-eye-fill"></i> */}
+{/* <i class="bi bi-eye-slash-fill"></i> */}

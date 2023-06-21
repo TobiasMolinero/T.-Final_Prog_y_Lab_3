@@ -1,4 +1,8 @@
 
+.main-login{
+    min-height: 510px;
+}
+
 .login{
     display: flex;
     flex-direction: column;
@@ -6,4 +10,14 @@
     background-color: #a5f063;
     border-radius: 15px;
     border: 1px solid black;
+}
+
+.bi-eye-fill{
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.bi-eye-slash-fill{
+    font-size: 25px;
+    cursor: pointer;
 }

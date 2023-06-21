@@ -60,7 +60,9 @@ const MainEmpleados = () => {
 
   useEffect(() => {
     getTurnos()
-    getAllEmpleados()
+    setTimeout(() => {
+      getAllEmpleados()
+    }, 100)
   }, [])
 
   return (
