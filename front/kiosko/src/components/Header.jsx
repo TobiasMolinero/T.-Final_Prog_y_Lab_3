@@ -19,6 +19,9 @@ const Header = () => {
       cancelButtonText: 'Cancelar',
       confirmButtonText: 'Aceptar',
       confirmButtonColor: '#a5f063',
+      allowOutsideClick: false,
+      allowEnterKey: false,
+      allowEscapeKey: false,
     }).then((result) => {
       if(result.isConfirmed){
         navigate('/')

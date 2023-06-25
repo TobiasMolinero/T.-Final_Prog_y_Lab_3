@@ -23,6 +23,10 @@
     scale: 103%;
 }
 
+.card-title{
+    color: black;
+}
+
 .fondo-img{
     background-color: #FF2E11;
     width: fit-content;

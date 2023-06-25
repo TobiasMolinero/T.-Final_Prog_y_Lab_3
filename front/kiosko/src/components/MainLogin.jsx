@@ -1,50 +1,56 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 import { useNavigate } from 'react-router-dom'
 import '../CSS/MainLogin.css'
 import { useState } from 'react'
 import Swal from 'sweetalert2'
+import axios from 'axios'
+import { validar_usuarios_URL } from '../constants/constants'
 
 
 const MainLogin = () => {
 
   const navigate = useNavigate()
   let [usuario, setUsuario] = useState('Tobias')
-  let [contraseña, setContrseña] = useState('hola')
-  let [tipoUsuario, setTipoUsuario] = useState('Administrador')
-  let [inputUsuario, setInputUsuario] = useState('')
-  let [inputContraseña, setInputContraseña] = useState('')
+  let [contraseña, setContraseña] = useState('hola')
   const [visible, setVisible] = useState(false)
 
-
-  const ingresar = (e) => {
-    if(inputUsuario === usuario && inputContraseña === contraseña){
-      e.preventDefault()
-      navigate('/home')
-      setTimeout(() => {
+  const handleIngresar = async(e) => {
+    e.preventDefault()
+    await axios.post(validar_usuarios_URL, {
+      nombreUsuario: usuario,
+      contraseña: contraseña
+    })
+    .then((result) => {
+      console.log(result)
+      if(result.data === 0){
         Swal.fire({
-          title: 'Bienvenido ' + usuario,
+          icon: 'error',
+          title: 'ERROR',
+          text: 'Debe ingresar datos validos.',
+          confirmButtonText: 'Volver',
+          confirmButtonColor: '#a5f063',
+          timer: 2000,
+          timerProgressBar: true, 
+        })
+      } else {
+        navigate('/home')
+        setTimeout(() => {
+        Swal.fire({
+          title: 'Bienvenido de nuevo',
           icon: 'success',
-          text: 'Ingresaste como ' + tipoUsuario,
+          text: 'Ingresaste como Admin.',
           confirmButtonText: 'Aceptar',
           confirmButtonColor: '#a5f063',
           timer: 3000,
           timerProgressBar: true,
           showCloseButton: true
         })
-      }, 100);
-    } else {
-      e.preventDefault()
-      Swal.fire({
-        title: 'Error',
-        text: 'Debe ingresar datos validos.',
-        icon: 'error',
-        confirmButtonColor: '#a5f063',
-        confirmButtonText: 'Aceptar',
-        timer: 3000,
-        timerProgressBar: true,
-        showCloseButton: true
-      })
-    }
+        }, 390);
+      }
+    }).catch((err) => {
+      console.log(err)
+    });
   }
 
   const handleChangeVisibility = () => {
@@ -58,18 +64,20 @@ const MainLogin = () => {
           <h1 className="text-center tituloMain">KIOSKO LA ESQUINA</h1>
           <h2 className="text-center subTituloMain">Sistema de gestión</h2>
           <div className="col-6 mt-3 p-4 login">
-            <h3 className="mb-4">Iniciar Sesión</h3>
-            <form onSubmit={ingresar}>
+            <h3 className="mb-4 title-form">Iniciar Sesión</h3>
+            <form id="formLogin" onSubmit={handleIngresar}>
               <div className="mb-3 d-flex flex-row gap-2">
                 <label className="form-label">Usuario:</label>
-                <input type="text" className="form-control" required onChange={(e) => setInputUsuario(e.target.value)}/>
+                <input type="text" className="form-control" required onChange={(e) => setUsuario(e.target.value)}/>
               </div>
               <div className="mb-3 d-flex flex-row gap-2">
                 <label className="form-label">Contraseña: </label>
-                <input type={visible === false ? 'password' : 'text'} className="form-control" required onChange={(e) => setInputContraseña(e.target.value)}/>
+                <input type={visible === false ? 'password' : 'text'} className="form-control" required onChange={(e) => setContraseña(e.target.value)}/>
                 <i className={visible === false ? "bi bi-eye-slash-fill" : "bi bi-eye-fill"} onClick={handleChangeVisibility}></i>
               </div>
-              <button type="submit" className="btn btn-primary">Ingresar</button>
+              <div className="d-flex justify-content-center">
+                <button type="submit" className="btn btn-success">Ingresar</button>
+              </div>
             </form>
           </div>
         </div>

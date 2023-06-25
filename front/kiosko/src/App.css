@@ -1,8 +1,33 @@
 /* body{
-  background-image: url('./assets/fondo.png');
-  background-size: contain;
-  background-repeat: no-repeat;
+
 } */
+
+Table{
+  box-shadow: 0px 0px 5px 1px black;
+}
+
+.btnAgregar{
+  box-shadow: 2px 2px 5px 1px black;
+}
+
+select{
+  text-align: center;
+}
+
+.formA{
+  background-color: #a5f063;
+  padding: 15px 0;
+  border-radius: 10px;
+  box-shadow: 0 0 5px 1px black;
+  font-size: 1.1rem;
+}
+
+.formE{
+  padding: 15px 0;
+  border-radius: 10px;
+  box-shadow: 0 0 5px 1px black;
+  font-size: 1.1rem;
+}
 
 /* #root {
   max-width: 1280px;

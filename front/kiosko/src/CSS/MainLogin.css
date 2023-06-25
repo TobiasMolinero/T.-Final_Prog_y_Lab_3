@@ -12,12 +12,27 @@
     border: 1px solid black;
 }
 
+.title-form{
+    font-weight: bold;
+    text-decoration: underline;
+}
+
 .bi-eye-fill{
     font-size: 25px;
     cursor: pointer;
+    transition: 0.5s;
+}
+
+.bi-eye-fill:hover{
+    opacity: 0.8;
 }
 
 .bi-eye-slash-fill{
     font-size: 25px;
     cursor: pointer;
+    transition: 0.5s;
+}
+
+.bi-eye-slash-fill:hover{
+    opacity: 0.8;
 }
