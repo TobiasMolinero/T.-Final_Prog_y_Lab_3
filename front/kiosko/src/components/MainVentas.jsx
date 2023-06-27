@@ -9,7 +9,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 const MainVentas = () => {
-
+  
   const [ventas, setVentas] = useState([])
 
   const getAllVentas = async() => {

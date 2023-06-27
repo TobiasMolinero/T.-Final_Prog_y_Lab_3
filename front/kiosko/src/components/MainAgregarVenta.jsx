@@ -3,7 +3,7 @@
 import '../CSS/MainVentas.css'
 import Swal from 'sweetalert2'
 import axios from 'axios'
-import { ventas, ventas_crear_URL, productos_URL, empleados_URL, clientes_URL, agregarCliente } from '../constants/constants'
+import { ventas, ventas_crear_URL, productos_URL, empleados_URL, clientes_URL } from '../constants/constants'
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -27,7 +27,6 @@ const MainAgregarVenta = () => {
     const [fecha, setFecha] = useState()
     const [cantidad, setCantidad] = useState()
     const [total, setTotal] = useState()
-
     
   const getAllEmpleados = async() => {
     let response = await axios.get(empleados_URL)
@@ -94,15 +93,23 @@ const MainAgregarVenta = () => {
     }
   }
 
-  const calcularTotal = () => {
-    let producto = productos.filter(p => p.idProducto === +idProducto)
-    setTotal(producto[0].precio * cantidad)
+  const calcularTotal = (e) => {
+    if(cantidad !== undefined){
+      let producto = productos.filter(p => p.idProducto === +idProducto)
+      setTotal(producto[0].precio * cantidad)
+    }
   }
 
-  const resetForm = () => {
-    formAgregar.reset()
-    setTotal('')
+  const disabledInputCant = (e) => {
+    if(e.keyCode === 109 || e.keyCode === 110 || e.keyCode === 189 || e.keyCode === 107 || e.keyCode === 187 || e.keyCode === 188 || e.keyCode === 69 || e.keyCode === 190) {
+      e.preventDefault()
+    }
   }
+
+  // const resetForm = () => {
+  //   formAgregar.reset()
+  //   setTotal('')
+  // }
 
   useEffect(() => {
     getAllEmpleados()
@@ -129,7 +136,7 @@ const MainAgregarVenta = () => {
                             </select>
                         </div>
                         <div className='mb-3'>
-                            <select className="form-select" id='selectC' aria-label="Default select example" defaultValue="selected" onChange={(e) => { setIdCliente(e.target.value) }} required>
+                            <select className="form-select" id='selectC' aria-label="Default select example" defaultValue="selected" onChange={(e) => { setIdCliente(e.target.value) }} required >
                                 <option value="selected" >--Seleccione Cliente--</option>
                                 {clientes.map(cliente =>
                                     <option key={cliente.idCliente} value={cliente.idCliente}>{cliente.nombreC}{' '}{cliente.apellidoC}</option>
@@ -137,7 +144,7 @@ const MainAgregarVenta = () => {
                             </select>
                         </div>
                         <div className='mb-3'>
-                            <select className="form-select" id='selectP' aria-label="Default select example" defaultValue="selected" onChange={(e) => { setIdProducto(e.target.value) }} required>
+                            <select className="form-select" id='selectP' defaultValue="selected" onChange={(e) => { setIdProducto(e.target.value) }} required>
                                 <option value="selected" >--Seleccione Producto--</option>
                                 {productos.map(producto =>
                                     <option key={producto.idProducto} value={producto.idProducto}>{producto.descripcion}</option>
@@ -150,14 +157,14 @@ const MainAgregarVenta = () => {
                         </div>
                         <div className='mb-3'>
                             <label htmlFor="txtCantidad" className='form-label me-3'>Cantidad: </label>
-                            <input type="text" id='txtCantidad' onKeyUp={calcularTotal} onChange={(e) => { setCantidad(e.target.value) }} required />
+                            <input type="number" id='txtCantidad' onKeyDown={disabledInputCant} onKeyUp={calcularTotal} onClick={calcularTotal} onChange={(e) => { setCantidad(e.target.value) }} min={0} required disabled={idProducto === undefined || idProducto === 'selected' ? true : false}/>
                         </div>
                         <div className='mb-3'>
-                            <label htmlFor="txtPrecio" className='form-label me-3'>Importe: </label>
-                            <input type="text" id="txtPrecio" defaultValue={total} onChange={(e) => { setTotal(e.target.value) }} disabled required/>
+                            <label htmlFor="txtPrecio" className='form-label me-3'>Total: </label>
+                            <input type="number" id="txtPrecio" defaultValue={total} onChange={(e) => { setTotal(e.target.value) }}min={0} step={0.01} disabled required/>
                         </div>
                         <div className="mb-3 d-flex justify-content-center gap-3">
-                            <Link to={ventas} onClick={() => { formAgregar.reset() }}><button className="btn btn-secondary">Cancelar y Volver</button></Link>
+                            <Link to={ventas} onClick={() => { formAgregar.reset() }}><button className="btn btn-secondary" type='button'>Cancelar y Volver</button></Link>
                             <button type="submit" className="btn btn-success">Guardar</button>
                         </div>            
                     </form>

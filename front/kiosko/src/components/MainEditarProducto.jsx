@@ -10,7 +10,9 @@ const MainEditarEmpleado = () => {
 
     let { id } = useParams()
     let navigate = useNavigate()
+
     const formEditar = document.getElementById('formEditar')
+    const selectCat = document.getElementById('selectCat')
 
     const [categoriasProductos, setCategoriasProductos] = useState([])
 
@@ -63,6 +65,20 @@ const MainEditarEmpleado = () => {
                     timerProgressBar: true
                 })
             });
+
+    }
+
+
+    const disabledInputStock = (e) => {
+        if(e.keyCode === 109 || e.keyCode === 110 || e.keyCode === 189 || e.keyCode === 107 || e.keyCode === 187 || e.keyCode === 188 || e.keyCode === 69 || e.keyCode === 190) {
+            e.preventDefault()
+        }
+    }
+
+    const disabledInputPrecio = (e) => {
+        if(e.keyCode === 109 || e.keyCode === 189 || e.keyCode === 107 || e.keyCode === 187 || e.keyCode === 188 || e.keyCode === 69) {
+            e.preventDefault()
+        }
     }
 
     useEffect(() => {
@@ -83,26 +99,26 @@ const MainEditarEmpleado = () => {
                             <input type="text" id="txtDescripcion" defaultValue={descripcion} onChange={(e) => { setDescripcion(e.target.value) }} autoComplete="off" required />
                         </div>
                         <div className="mb-3">
-                            <label className="form-label" htmlFor="txtPrecio">Precio: </label>
-                            <input type="text" id="txtPrecio" defaultValue={precio} onChange={(e) => { setPrecio(e.target.value) }} autoComplete="off" required />
+                            <label className="form-label" htmlFor="txtPrecio">*Precio: </label>
+                            <input type="number" id="txtPrecio" placeholder="Ej: 243.85" defaultValue={precio} onKeyDown={disabledInputPrecio} onChange={(e) => { setPrecio(e.target.value) }}min={0} step={0.01} autoComplete="off" required />
                         </div>
                         <div className="mb-3">
                             <label className="form-label" htmlFor="txtStock">Stock: </label>
-                            <input type="number" id="txtStock" defaultValue={stock} onChange={(e) => { setStock(e.target.value) }} autoComplete="off" required />
+                            <input type="number" id="txtStock" defaultValue={stock} onKeyDown={disabledInputStock} onChange={(e) => { setStock(e.target.value) }} min={0} autoComplete="off" required />
                         </div>
                         <div className="mb-3">
-                            <select className="form-select" id="cmbCategoria" value={categoria} onChange={(e) => { setCategoria(e.target.value) }} autoComplete="off" required>
+                            <select className="form-select" id="selectCat" value={categoria} onChange={(e) => { setCategoria(e.target.value) }} autoComplete="off" required>
                                 {categoriasProductos.map(categoria =>
                                     <option key={categoria.idCategoriaP} value={categoria.idCategoriaP}>{categoria.nombreCategoria}</option>
                                 )}
                             </select>
                         </div>
                         <div className="mb-3 d-flex justify-content-center gap-3">
-                            <Link to={productos} onClick={()=>{formEditar.reset()}}><button className="btn btn-secondary">Cancelar y Volver</button></Link>
+                            <Link to={productos} onClick={() => { formEditar.reset() }}><button className="btn btn-secondary">Cancelar y Volver</button></Link>
                             <button type="submit" className="btn btn-success">Modificar</button>
                         </div>
                     </form>
-
+                    <p>(*)Se aceptan hasta 8 números enteros y solo se aceptan dos números decimales.</p>                
                 </div>
             </div>
         </div>

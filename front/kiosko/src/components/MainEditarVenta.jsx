@@ -24,7 +24,8 @@ const MainEditarVenta = () => {
     const [idProducto, setIdProducto] = useState()
     const [fecha, setFecha] = useState()
     const [cantidad, setCantidad] = useState()
-    const [importe, setImporte] = useState()
+    const [total, setTotal] = useState()
+    const [firstClick, setFirstClick] = useState(true)
 
     const getVenta = async () => {
         let response = await axios.get(ventas_URL + id)
@@ -32,9 +33,9 @@ const MainEditarVenta = () => {
         setIdEmpleado(response.data[0].idEmpleado)
         setIdCliente(response.data[0].idCliente)
         setIdProducto(response.data[0].idProducto)
-        setFecha(response.data[0].fecha)
+        setFecha((response.data[0].fecha).substring(0, 10))
         setCantidad(response.data[0].cantidad)
-        setImporte(response.data[0].total)
+        setTotal(response.data[0].total)
     }
 
     const getAllEmpleados = async () => {
@@ -88,6 +89,19 @@ const MainEditarVenta = () => {
             });
     }
 
+    const calcularTotal = () => {
+        if(cantidad !== undefined){
+            let producto = productos.filter(p => p.idProducto === +idProducto)
+            setTotal(producto[0].precio * cantidad)
+        }
+    }
+
+    const disabledInputCant = (e) => {
+        if(e.keyCode === 109 || e.keyCode === 110 || e.keyCode === 189 || e.keyCode === 107 || e.keyCode === 187 || e.keyCode === 188 || e.keyCode === 69 || e.keyCode === 190) {
+            e.preventDefault()
+        }
+    }
+
     useEffect(() => {
         getAllEmpleados()
         getAllClientes()
@@ -105,24 +119,24 @@ const MainEditarVenta = () => {
                     <form id="formEditar" className="mt-3" onSubmit={handleEditVenta}>
                         <div className='mb-3'>
                             <label htmlFor="txtNroFactura" className='form-label me-3'>Nro. Factura:</label>
-                            <input type="text" id="txtNroFactura" value={nroFactura} onChange={(e) => { setNroFactura(e.target.value) }} />
+                            <input type="text" id="txtNroFactura" value={nroFactura} onChange={(e) => { setNroFactura(e.target.value) }} required/>
                         </div>
                         <div className='mb-3'>
-                            <select className="form-select" aria-label="Default select example" value={idEmpleado} onChange={(e) => { setIdEmpleado(e.target.value) }}>
+                            <select className="form-select" value={idEmpleado} onChange={(e) => { setIdEmpleado(e.target.value) }}>
                                 {empleados.map(empleado =>
                                     <option key={empleado.idEmpleado} value={empleado.idEmpleado}>{empleado.nombreE}{' '}{empleado.apellidoE}</option>
                                 )}
                             </select>
                         </div>
                         <div className='mb-3'>
-                            <select className="form-select" aria-label="Default select example" value={idCliente} onChange={(e) => { setIdCliente(e.target.value) }}>
+                            <select className="form-select" value={idCliente} onChange={(e) => { setIdCliente(e.target.value) }}>
                                 {clientes.map(cliente =>
                                     <option key={cliente.idCliente} value={cliente.idCliente}>{cliente.nombreC}{' '}{cliente.apellidoC}</option>
                                 )}
                             </select>
                         </div>
                         <div className='mb-3'>
-                            <select className="form-select" aria-label="Default select example" value={idProducto} onChange={(e) => { setIdProducto(e.target.value) }}>
+                            <select className="form-select" value={idProducto} onChange={(e) => { setIdProducto(e.target.value) }} onClickCapture={calcularTotal}>
                                 {productos.map(producto =>
                                     <option key={producto.idProducto} value={producto.idProducto}>{producto.descripcion}</option>
                                 )}
@@ -130,15 +144,15 @@ const MainEditarVenta = () => {
                         </div>
                         <div className='mb-3'>
                             <label htmlFor="txtFecha" className='form-label me-3'>Fecha: </label>
-                            <input type="date" id="txtFecha" value={fecha} onChange={(e) => { setFecha(e.target.value) }} />
+                            <input type="date" id="txtFecha" value={fecha} onChange={(e) => { setFecha(e.target.value) }} required/>
                         </div>
                         <div className='mb-3'>
                             <label htmlFor="txtCantidad" className='form-label me-3'>Cantidad: </label>
-                            <input type="number" id='txtCantidad' value={cantidad} onChange={(e) => { setCantidad(e.target.value) }} />
+                            <input type="number" id='txtCantidad' value={cantidad} onKeyDown={disabledInputCant} onKeyUp={calcularTotal} onClick={calcularTotal} onChange={(e) => { setCantidad(e.target.value) }} min={0} required/>
                         </div>
                         <div className='mb-3'>
-                            <label htmlFor="txtPrecio" className='form-label me-3'>Importe: </label>
-                            <input type="text" id="txtPrecio" value={importe} onChange={(e) => { setImporte(e.target.value) }} />
+                            <label htmlFor="txtPrecio" className='form-label me-3'>Total: </label>
+                            <input type="text" id="txtPrecio" value={total} onChange={(e) => { setTotal(e.target.value) }} min={0} step={0.01} disabled required/>
                         </div>
                         <div className="mb-3 d-flex justify-content-center gap-3">
                             <Link to={ventas} onClick={() => { formEditar.reset() }}><button className="btn btn-secondary">Cancelar y Volver</button></Link>

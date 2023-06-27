@@ -73,6 +73,19 @@ const MainAgregarProducto = () => {
         }
     }
 
+    
+    const disabledInputStock = (e) => {
+        if(e.keyCode === 109 || e.keyCode === 110 || e.keyCode === 189 || e.keyCode === 107 || e.keyCode === 187 || e.keyCode === 188 || e.keyCode === 69 || e.keyCode === 190) {
+            e.preventDefault()
+        }
+    }
+
+    const disabledInputPrecio = (e) => {
+        if(e.keyCode === 109 || e.keyCode === 189 || e.keyCode === 107 || e.keyCode === 187 || e.keyCode === 188 || e.keyCode === 69) {
+            e.preventDefault()
+        }
+    }
+
     useEffect(() => {
         getCategoriesProducts()
     }, [])
@@ -88,12 +101,12 @@ const MainAgregarProducto = () => {
                             <input type="text" id="txtDescripcion" onChange={(e) => { setDescripcion(e.target.value) }} autoComplete='off' required />
                         </div>
                         <div className='mb-3'>
-                            <label htmlFor="txtPrecio" className='form-label me-3'>Precio: </label>
-                            <input type="text" id="txtPrecio" onChange={(e) => { setPrecio(e.target.value) }} autoComplete='off' required />
+                            <label htmlFor="txtPrecio" className='form-label me-3'>*Precio: </label>
+                            <input type="number" id="txtPrecio" placeholder="Ej: 243.85" onKeyDown={disabledInputPrecio} onChange={(e) => { setPrecio(e.target.value) }} min={0} step={0.01} autoComplete='off' required />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="txtStock" className='form-label me-3'>Stock: </label>
-                            <input type="number" id='txtStock' onChange={(e) => { setStock(e.target.value) }} autoComplete='off' required />
+                            <input type="number" id='txtStock' onKeyDown={disabledInputStock} onChange={(e) => { setStock(e.target.value) }} min={0} autoComplete='off' required />
                         </div>
                         <div className='mb-3'>
                             <select className="form-select" id="selectCat" aria-label="Default select example" defaultValue='selected' onChange={(e) => { setCategoria(e.target.value) }} required>
@@ -108,6 +121,7 @@ const MainAgregarProducto = () => {
                             <button type="submit" className="btn btn-success">Guardar</button>
                         </div>
                     </form>
+                    <p>(*)Se aceptan hasta 8 números enteros y solo se aceptan dos números decimales.</p>
                 </div>
             </div>
         </div>

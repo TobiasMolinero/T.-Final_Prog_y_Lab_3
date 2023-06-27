@@ -33,13 +33,13 @@ const crearVenta = (req, res) => {
 }
 
 const editarVenta = (req, res) => {
-    const id = req.params.body
+    const id = req.params.id
     const {nroFactura, idEmpleado, idCliente, idProducto, fecha, cantidad, total, borrar} = req.body
     connection.query(`UPDATE ventas SET nroFactura=${nroFactura},
                         idEmpleado=${idEmpleado},
                         idCliente=${idCliente},
                         idProducto=${idProducto},
-                        fecha=${fecha},
+                        fecha='${fecha}',
                         cantidad=${cantidad},
                         total=${total},
                         borrar=${borrar}
