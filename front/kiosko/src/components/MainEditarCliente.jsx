@@ -33,7 +33,7 @@ const MainEditarCliente = () => {
             apellidoC: apellido,
             telefono: telefono,
             domicilio: domicilio,
-            borrar: 0
+            estado: 1
         })
         .then((result) => {
             Swal.fire({
@@ -41,12 +41,16 @@ const MainEditarCliente = () => {
                 title: 'Guardado',
                 text: 'El Cliente se modificó con exito. Volviendo a clientes.',
                 showConfirmButton: false,
-                timer: 1800,
-                timerProgressBar: true
+                showCloseButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                allowEnterKey: false,
             })
             setTimeout(() => {
               navigate(clientes)  
-            }, 2020);
+            }, 2015);
         }).catch((err) => {
             Swal.fire({
                 icon: 'error',

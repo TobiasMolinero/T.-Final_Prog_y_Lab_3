@@ -1,6 +1,10 @@
 
 .main-login{
-    min-height: 510px;
+    min-height: 570px;
+}
+
+.brand{
+    width: 480px;
 }
 
 .login{
@@ -12,27 +16,34 @@
     border: 1px solid black;
 }
 
+.label-login{
+    font-weight: bolder;
+}
+
 .title-form{
     font-weight: bold;
-    text-decoration: underline;
 }
 
 .bi-eye-fill{
+    position: absolute;
+    right: 535px;   
     font-size: 25px;
     cursor: pointer;
-    transition: 0.5s;
+    opacity: 0.8;
 }
 
 .bi-eye-fill:hover{
-    opacity: 0.8;
+    opacity: 1;
 }
 
 .bi-eye-slash-fill{
+    position: absolute;
+    right: 535px;   
     font-size: 25px;
     cursor: pointer;
-    transition: 0.5s;
+    opacity: 0.8;
 }
 
 .bi-eye-slash-fill:hover{
-    opacity: 0.8;
+    opacity: 1;
 }

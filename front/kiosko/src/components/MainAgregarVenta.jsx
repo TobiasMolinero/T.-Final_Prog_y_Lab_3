@@ -64,22 +64,45 @@ const MainAgregarVenta = () => {
         fecha: fecha,
         cantidad: cantidad,
         total: total,
-        borrar: 0
+        estado: 1
       })
       .then((result) => {
         Swal.fire({
           icon: 'success',
           title: 'Guardado',
           text: 'La venta se guardó con exito.',
+          showConfirmButton: true,
           confirmButtonColor: '#a5f063',
-          showCloseButton: true,
-          timer: 2000,
-          timerProgressBar: true
+          confirmButtonText: 'Aceptar',
+          showCloseButton: false,
+          allowEscapeKey: false,
+          allowOutsideClick: false,
+          allowEnterKey: false,
+        }).then((result) => {
+          if(result.isConfirmed){
+            formAgregar.reset()
+            setTotal(undefined)
+            Swal.fire({
+              icon: 'question',
+              text: '¿Desea registrar otra venta?',
+              showCloseButton: false,
+              confirmButtonText: 'Aceptar',
+              confirmButtonColor: '#a5f063',
+              showCancelButton: true,
+              cancelButtonText: 'cancelar',
+              cancelButtonColor: 'grey',
+              allowEscapeKey: false,
+              allowOutsideClick: false,
+              allowEnterKey: false,
+            }).then((result) => {
+              if(result.isDismissed){
+                navigate(ventas)
+              } else {
+                Swal.close
+              }
+            })
+          }
         })
-        formAgregar.reset()
-        setTimeout(() => {
-          navigate(ventas)
-        }, 2015);
       }).catch((err) => {
         Swal.fire({
           icon: 'error',
@@ -105,11 +128,6 @@ const MainAgregarVenta = () => {
       e.preventDefault()
     }
   }
-
-  // const resetForm = () => {
-  //   formAgregar.reset()
-  //   setTotal('')
-  // }
 
   useEffect(() => {
     getAllEmpleados()

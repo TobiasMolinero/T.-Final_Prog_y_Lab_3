@@ -21,7 +21,7 @@ const crearEmpleado = (req, res) => {
         apellidoE: req.body.apellidoE,
         sueldo: req.body.sueldo,
         idTurno: req.body.idTurno,
-        borrar: req.body.borrar
+        estado: req.body.estado
     },(error, results) => {
         if(error) throw error
         res.send(results)
@@ -30,7 +30,7 @@ const crearEmpleado = (req, res) => {
 
 const borrarEmpleado = (req, res) => {
     const id = req.params.id
-    connection.query(`UPDATE empleados SET borrar = 1 WHERE idEmpleado=${id}`, (error, results) => {
+    connection.query(`UPDATE empleados SET estado = 0 WHERE idEmpleado=${id}`, (error, results) => {
         if (error){
             throw error
         } else {
@@ -41,12 +41,12 @@ const borrarEmpleado = (req, res) => {
 
 const editarEmpleado = (req, res) => {
     const id = req.params.id
-    const {nombre, apellido, sueldo, idTurno, borrar} = req.body
-    connection.query(`UPDATE empleados SET nombreE = '${nombre}', 
-                        apellidoE = '${apellido}', 
+    const {nombreE, apellidoE, sueldo, idTurno, estado} = req.body
+    connection.query(`UPDATE empleados SET nombreE = '${nombreE}', 
+                        apellidoE = '${apellidoE}', 
                         sueldo = ${sueldo}, 
                         idTurno = ${idTurno},
-                        borrar = ${borrar}
+                        estado = ${estado}
                         WHERE idEmpleado = ${id}
     `, (error, results) => {
         if(error) throw error

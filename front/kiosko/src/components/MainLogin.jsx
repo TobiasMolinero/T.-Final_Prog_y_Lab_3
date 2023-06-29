@@ -6,6 +6,7 @@ import { useState } from 'react'
 import Swal from 'sweetalert2'
 import axios from 'axios'
 import { validar_usuarios_URL } from '../constants/constants'
+import brand from '../assets/brand-header.png'
 
 
 const MainLogin = () => {
@@ -60,18 +61,21 @@ const MainLogin = () => {
   return (
     <div>
       <div className="container p-5 main-login">
+        <div className="row">
+          <img src={brand} className='brand mx-auto' alt="" />
+        </div>
         <div className="row d-flex justify-content-center">
-          <h1 className="text-center tituloMain">KIOSKO LA ESQUINA</h1>
-          <h2 className="text-center subTituloMain">Sistema de gestión</h2>
-          <div className="col-6 mt-3 p-4 login">
-            <h3 className="mb-4 title-form">Iniciar Sesión</h3>
+          {/* <h1 className="text-center tituloMain">KIOSKO LA ESQUINA</h1> */}
+          {/* <h2 className="text-center subTituloMain">Sistema de gestión</h2> */}
+          <div className="col-6 mt-4 p-4 login">
+            <h2 className="mb-4 title-form">Iniciar Sesión</h2>
             <form id="formLogin" onSubmit={handleIngresar}>
               <div className="mb-3 d-flex flex-row gap-2">
-                <label className="form-label">Usuario:</label>
+                <label className="form-label label-login align-self-center">Usuario:</label>
                 <input type="text" className="form-control" required onChange={(e) => setUsuario(e.target.value)}/>
               </div>
               <div className="mb-3 d-flex flex-row gap-2">
-                <label className="form-label">Contraseña: </label>
+                <label className="form-label label-login align-self-center">Contraseña: </label>
                 <input type={visible === false ? 'password' : 'text'} className="form-control" required onChange={(e) => setContraseña(e.target.value)}/>
                 <i className={visible === false ? "bi bi-eye-slash-fill" : "bi bi-eye-fill"} onClick={handleChangeVisibility}></i>
               </div>

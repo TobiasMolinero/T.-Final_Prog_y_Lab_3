@@ -12,7 +12,7 @@ const MainEditarEmpleado = () => {
     let navigate = useNavigate()
 
     const formEditar = document.getElementById('formEditar')
-    const selectCat = document.getElementById('selectCat')
+    // const selectCat = document.getElementById('selectCat')
 
     const [categoriasProductos, setCategoriasProductos] = useState([])
 
@@ -41,7 +41,7 @@ const MainEditarEmpleado = () => {
             precio: precio,
             stock: stock,
             idCategoria: categoria,
-            borrar: 0
+            estado: 1
         })
             .then((result) => {
                 Swal.fire({
@@ -49,12 +49,16 @@ const MainEditarEmpleado = () => {
                     title: 'Guardado',
                     text: 'El producto se modificó con exito, Volviendo a productos.',
                     showConfirmButton: false,
-                    timer: 1800,
+                    showCloseButton: false,
+                    timer: 2000,
                     timerProgressBar: true,
+                    allowEscapeKey: false,
+                    allowOutsideClick: false,
+                    allowEnterKey: false,
                 })
                 setTimeout(() => {
                     navigate(productos)
-                }, 2020);
+                }, 2015);
             }).catch((err) => {
                 Swal.fire({
                     icon: 'error',

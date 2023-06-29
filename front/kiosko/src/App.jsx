@@ -2,6 +2,7 @@ import Login from './pages/Login'
 import Home from './pages/Home'
 import Ventas from './pages/Ventas'
 import Productos from './pages/Productos'
+import Categorias from './pages/Categorias'
 import Empleados from './pages/Empleados'
 import Clientes from './pages/Clientes'
 import AgregarVenta from './pages/AgregarVenta'
@@ -13,7 +14,7 @@ import EditarProducto from './pages/EditarProducto'
 import EditarEmpleado from './pages/EditarEmpleado'
 import EditarCliente from './pages/EditarCliente'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { login, home, ventas, productos, empleados, clientes, agregarVenta, agregarProducto, agregarEmpleado, agregarCliente, editarVenta, editarProducto, editarEmpleado, editarCliente } from './constants/constants'
+import { login, home, ventas, productos, empleados, clientes, agregarVenta, agregarProducto, agregarEmpleado, agregarCliente, editarVenta, editarProducto, editarEmpleado, editarCliente, categorias } from './constants/constants'
 import './App.css'
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Route path={home} element={<Home/>}></Route>
         <Route path={ventas} element={<Ventas/>}></Route>
         <Route path={productos} element={<Productos/>}></Route>
+        <Route path={categorias} element={<Categorias/>}></Route>
         <Route path={empleados} element={<Empleados/>}></Route>
         <Route path={clientes} element={<Clientes/>}></Route>
         <Route path={agregarVenta} element={<AgregarVenta/>}></Route>

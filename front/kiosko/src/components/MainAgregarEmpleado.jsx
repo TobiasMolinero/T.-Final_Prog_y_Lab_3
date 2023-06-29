@@ -43,16 +43,19 @@ const MainAgregarEmpleado = () => {
                 apellidoE: apellido,
                 sueldo: sueldo,
                 idTurno: turno,
-                borrar: 0
+                estado: 1
             }).then((result) => {
                 Swal.fire({
                     icon: 'success',
                     title: 'Guardado',
                     text: 'El registro del nuevo empleado se guardó con exito.',
-                    confirmButtonColor: '#a5f063',
-                    showCloseButton: true,
+                    showConfirmButton: false,
+                    showCloseButton: false,
                     timer: 2000,
-                    timerProgressBar: true
+                    timerProgressBar: true,
+                    allowEscapeKey: false,
+                    allowOutsideClick: false,
+                    allowEnterKey: false,
                 })
                 formAgregar.reset()
                 setTimeout(() => {

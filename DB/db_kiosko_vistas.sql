@@ -9,8 +9,7 @@ INNER JOIN clientes C
 ON V.idCliente = C.idCliente
 INNER JOIN productos P
 ON V.idProducto = P.idProducto
-WHERE V.borrar = 0;
-
+WHERE V.estado = 1;
 
 /* Traer productos con el nombre de la categoria */
 DROP VIEW IF EXISTS traer_productos;
@@ -19,7 +18,7 @@ CREATE VIEW traer_productos AS
 SELECT P.idProducto, P.descripcion, P.precio, P.stock, CP.nombreCategoria FROM productos P
 INNER JOIN categorias_productos CP
 ON P.idCategoria = CP.idCategoriaP
-WHERE P.borrar = 0;
+WHERE P.estado = 1;
 
 
 /* Traer empleados con la descripcion del turno */
@@ -29,4 +28,4 @@ CREATE VIEW traer_empleados AS
 SELECT E.idEmpleado, E.nombreE, E.apellidoE, E.sueldo, T.tipo_turno FROM empleados E
 INNER JOIN turnos T
 ON E.idTurno = T.id_turno
-WHERE E.borrar = 0;
+WHERE E.estado = 1;

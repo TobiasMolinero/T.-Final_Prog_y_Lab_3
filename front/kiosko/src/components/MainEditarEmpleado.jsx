@@ -43,7 +43,7 @@ const MainEditarEmpleado = () => {
             apellidoE: apellido,
             sueldo: sueldo,
             idTurno: turno,
-            borrar: 0
+            estado: 1
         })
             .then((result) => {
                 Swal.fire({
@@ -52,7 +52,10 @@ const MainEditarEmpleado = () => {
                     text: 'El empleado se modificó con exito. Volviendo a empleados',
                     showConfirmButton: false,
                     timer: 1800,
-                    timerProgressBar: true
+                    timerProgressBar: true,
+                    allowEscapeKey: false,
+                    allowOutsideClick: false,
+                    allowEnterKey: false,
                 })
                 setTimeout(() => {
                     navigate(empleados)

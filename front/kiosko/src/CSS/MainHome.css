@@ -2,7 +2,14 @@
     font-family: 'Oxygen', sans-serif;
 }
 
-.tituloMain{
+.brand-home{
+    transition: transform 0.55s;
+}
+
+.brand-home:hover{
+    transform: scale(1.1);
+}
+/* .tituloMain{
     font-family: 'Passion One', cursive;
     font-size: 3.3rem;
     filter: drop-shadow(3px 2px 1px rgb(0 0 0 / 25%))
@@ -10,17 +17,17 @@
 
 .subTituloMain{
     font-family: 'Oxygen', sans-serif;
-}
+} */
 
 .card{
     /* border: 1px solid #707070; */
     background-color: #a5f063;
-    transition: box-shadow 0.5s, scale 0.5s;
+    transition: box-shadow 0.5s;
+    max-width: 280px;
 }
 
 .card:hover{
     box-shadow: 0 0 10px 1px black;
-    scale: 103%;
 }
 
 .card-title{
@@ -46,6 +53,10 @@
     margin-top: 15px;
     padding: 3px 15px;
     background-color: #FF2E11;
+}
+
+.botonesMain:hover{
+    background-color: #c92b16;
 }
 
 .link-card{

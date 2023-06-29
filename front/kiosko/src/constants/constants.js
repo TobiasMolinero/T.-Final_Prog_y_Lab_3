@@ -3,6 +3,7 @@ export const login = "/"
 export const home = "/home"
 export const ventas = "/ventas"
 export const productos = "/productos"
+export const categorias = '/productos/categorias/'
 export const empleados = "/empleados"
 export const clientes = "/clientes"
 export const agregarVenta = '/ventas/agregar/'
@@ -40,8 +41,13 @@ export const clientes_crear_URL = 'http://localhost:3000/clientes/crear/'
 export const clientes_editar_URL = 'http://localhost:3000/clientes/editar/'
 export const clientes_eliminar_URL = 'http://localhost:3000/clientes/eliminar/'
 
+//CATEGORIAS
+export const categoriasProductos_URL = 'http://localhost:3000/categorias/'
+export const categoriasProductos_crear_URL = 'http://localhost:3000/categorias/crear/'
+export const categoriasProductos_editar_URL = 'http://localhost:3000/categorias/editar/'
+export const categoriasProductos_eliminar_URL = 'http://localhost:3000/categorias/eliminar/'
+
 // OTROS
 export const usuarios_URL = 'http://localhost:3000/usuarios/'
 export const validar_usuarios_URL = 'http://localhost:3000/usuarios/login'
-export const categoriasProductos_URL = 'http://localhost:3000/categorias/'
 export const turnos_URL = 'http://localhost:3000/turnos/'

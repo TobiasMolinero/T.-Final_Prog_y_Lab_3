@@ -62,8 +62,8 @@ const MainEditarVenta = () => {
             idProducto: idProducto,
             fecha: fecha,
             cantidad: cantidad,
-            total: importe,
-            borrar: 0
+            total: total,
+            estado: 1
         })
             .then((result) => {
                 Swal.fire({

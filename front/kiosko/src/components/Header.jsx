@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { home, ventas, productos, empleados, clientes } from '../constants/constants'
-import brand from '../assets/brand-header.png'
+// import brand from '../assets/brand-header.png'
+import off from '../assets/off.png'
 import '../CSS/Header.css'
 import Swal from 'sweetalert2'
 // import { useState } from 'react'
@@ -32,11 +33,11 @@ const Header = () => {
   return (
     <header className='header-active'>
       <nav className="navbar navbar-expand-lg">
-        <Link to={home}>
+        {/* <Link to={home}>
           <img src={brand} alt="logo" className='logo' />
-        </Link>
-        <div className="text-center" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+        </Link> */}
+        <div className="text-center menu-header d-flex justify-content-center " id="navbarSupportedContent">
+          <ul className="navbar-nav">
             <li className="nav-item">
               <Link className="nav-link" aria-current="page" to={home}>Inicio</Link>
             </li>
@@ -53,7 +54,7 @@ const Header = () => {
             </li>
           </ul>
         </div>
-        <button type='button' onClick={handleClick} className='me-5 cerrarSesion'>Cerrar Sesión</button>
+        <button type='button' onClick={handleClick} className='btn btn-danger me-3 cerrarSesion' title='Cerrar Sesión'><img src={off} className='off'></img></button>
       </nav>
     </header>
   )

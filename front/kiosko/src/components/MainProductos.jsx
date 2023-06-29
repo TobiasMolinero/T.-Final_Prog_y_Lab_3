@@ -4,7 +4,7 @@ import '../CSS/MainProductos.css'
 import Swal from 'sweetalert2'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { productos_URL, productos_eliminar_URL, editarProducto, agregarProducto } from '../constants/constants'
+import { productos_URL, productos_eliminar_URL, editarProducto, agregarProducto, categorias } from '../constants/constants'
 import { Link } from 'react-router-dom'
 import { Table } from 'react-bootstrap'
 
@@ -37,10 +37,10 @@ const MainProductos = () => {
               icon: 'success',
               title: 'Eliminado',
               text: 'El registro se eliminó con exito.',
-              confirmButtonColor: '#a5f063',
               showCloseButton: true,
               timer: 2000,
-              timerProgressBar: true
+              timerProgressBar: true,
+              showConfirmButton: false
             })
             getAllProducts()
           }).catch((err) => {
@@ -63,6 +63,16 @@ const MainProductos = () => {
   return (
     <div className="container p-4 main-productos">
       <h1 className="titulo-productos text-center">Productos</h1>
+      {/* <div className="row">
+        <div className="col-12 d-flex justify-content-start align-items-end">
+          <form className='text-center'>
+            <select className='form-select' defaultValue='selected'>
+              <option value="selected">Filtrar por:</option>
+              <option>Categoria</option>
+            </select>
+          </form>
+        </div>
+      </div> */}
       <div className="row">
         <div className="col-9">
           <Table striped bordered hover className="table mt-4 text-center">
@@ -98,9 +108,12 @@ const MainProductos = () => {
           </Table>
         </div>
         <div className="col-3">
-          <div className="col-12 d-flex justify-content-start mt-4">
+          <div className="col-12 d-flex flex-column align-items-start gap-3 mt-4">
             <Link to={agregarProducto}>
               <button className="btn btn-success btnAgregar" type="button"><i className="bi bi-plus-circle me-2"></i>Agregar Producto</button>
+            </Link>
+            <Link to={categorias}>
+              <button className='btn btn-secondary btnAgregar'><i className="bi bi-eye me-2"></i>Ver Categorias</button>
             </Link>
           </div>
         </div>

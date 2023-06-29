@@ -1,5 +1,6 @@
 import {ventas, productos, empleados, clientes} from '../constants/constants.js'
 import {Link} from 'react-router-dom'
+import brandHome from '../assets/brand-home.png'
 import imagenVenta from '../assets/imagenVenta.png'
 import imagenProductos from '../assets/imagenProductos.png'
 import imagenEmpleados from '../assets/imagenEmpleados.png'
@@ -13,12 +14,15 @@ const MainHome = () => {
 
   return (
     <main>
-      <div className="container p-5">
-        <div className="row d-flex justify-content-center">
-          <h1 className="text-center tituloMain">KIOSKO LA ESQUINA</h1>
-          <h2 className="text-center subTituloMain">Sistema de gestión</h2>
-          <div className="col-6 mt-4">
-            <div className="row row-cols-1 row-cols-md-2 g-4">
+      <div className="container py-4">
+        <div className="row d-flex">
+          <div className="col-12 col-sm-12 col-md-12 col-lg-5">
+            {/* <h1 className="text-center tituloMain">KIOSKO LA ESQUINA</h1> */}
+              <img src={brandHome} className='mt-3 brand-home' alt="logo" title='logo'/>
+            {/* <h2 className="text-center subTituloMain">Sistema de gestión</h2> */}
+          </div>
+          <div className="col-12 col-sm-12 col-md-12 col-lg-7 mt-4 px-5">
+            <div className="row row-cols-md-2 g-4">
               <div className="col">
                 <div className="card h-100 d-flex flex-column align-items-center">
                   <figure className='fondo-img mt-4'>

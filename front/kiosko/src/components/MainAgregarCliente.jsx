@@ -24,22 +24,25 @@ const MainAgregarCliente = () => {
             apellidoC: apellido,
             telefono: telefono,
             domicilio: domicilio,
-            borrar: 0
+            estado: 1
         })
             .then((result) => {
                 Swal.fire({
                     icon: 'success',
                     title: 'Guardado',
                     text: 'El registro del cliente se guardó con exito.',
-                    confirmButtonColor: '#a5f063',
-                    showCloseButton: true,
+                    showCloseButton: false,
+                    showConfirmButton: false,
                     timer: 2000,
                     timerProgressBar: true,
+                    allowEscapeKey: false,
+                    allowOutsideClick: false,
+                    allowEnterKey: false,
                 })
                 formAgregar.reset()
                 setTimeout(() => {
                     navigate(clientes)
-                }, 2010);
+                }, 2015);
             }).catch((err) => {
                 Swal.fire({
                     icon: 'error',

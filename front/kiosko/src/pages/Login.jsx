@@ -1,11 +1,11 @@
 import MainLogin from '../components/MainLogin'
 import Footer from '../components/Footer'
-import HeaderLogin from '../components/HeaderLogin'
+// import HeaderLogin from '../components/HeaderLogin'
 
 const Login = () => {
   return (
     <>
-      <HeaderLogin/>
+      {/* <HeaderLogin/> */}
       <MainLogin/>
       <Footer/>
     </>

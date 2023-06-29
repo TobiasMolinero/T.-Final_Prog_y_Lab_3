@@ -35,7 +35,7 @@ const MainClientes = () => {
           Swal.fire({
             icon: 'success',
             text: 'Se eliminó el registro con exito',
-            confirmButtonColor: '#a5f063',
+            showConfirmButton: false,
             timer: 2000,
             timerProgressBar: true,
             showCloseButton: true, 

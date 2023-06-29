@@ -36,7 +36,7 @@ const MainEmpleados = () => {
               icon: 'success',
               title: 'Eliminado',
               text: 'El registro se eliminó con exito.',
-              confirmButtonColor: '#a5f063',
+              showConfirmButton: false,
               showCloseButton: true,
               timer: 2000,
               timerProgressBar: true

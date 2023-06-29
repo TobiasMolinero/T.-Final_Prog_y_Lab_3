@@ -44,22 +44,45 @@ const MainAgregarProducto = () => {
                 precio: precio,
                 stock: stock,
                 idCategoria: categoria,
-                borrar: 0
+                estado: 1
             })
                 .then((result) => {
                     Swal.fire({
                         icon: 'success',
                         title: 'Guardado',
                         text: 'El registro del nuevo producto se guardó con exito.',
+                        showConfirmButton: true,
                         confirmButtonColor: '#a5f063',
-                        showCloseButton: true,
-                        timer: 2000,
-                        timerProgressBar: true
+                        confirmButtonText: 'Aceptar',
+                        showCloseButton: false,
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        allowEnterKey: false,
+                    }).then((result) => {
+                        formAgregar.reset()
+                        if (result.isConfirmed) {
+                            Swal.fire({
+                                icon: 'question',
+                                text: '¿Desea registrar otro producto?',
+                                showCloseButton: false,
+                                confirmButtonText: 'Aceptar',
+                                confirmButtonColor: '#a5f063',
+                                showCancelButton: true,
+                                cancelButtonText: 'cancelar',
+                                cancelButtonColor: 'grey',
+                                allowEscapeKey: false,
+                                allowOutsideClick: false,
+                                allowEnterKey: false,
+                            }).then((result) => {
+                                if (result.isDismissed) {
+                                    navigate(productos)
+                                } else {
+                                    Swal.close
+                                }
+                            })
+                        }
                     })
                     formAgregar.reset()
-                    setTimeout(() => {
-                      navigate(productos)
-                    }, 2015);
                 }).catch((err) => {
                     Swal.fire({
                         icon: 'error',
@@ -73,15 +96,15 @@ const MainAgregarProducto = () => {
         }
     }
 
-    
+
     const disabledInputStock = (e) => {
-        if(e.keyCode === 109 || e.keyCode === 110 || e.keyCode === 189 || e.keyCode === 107 || e.keyCode === 187 || e.keyCode === 188 || e.keyCode === 69 || e.keyCode === 190) {
+        if (e.keyCode === 109 || e.keyCode === 110 || e.keyCode === 189 || e.keyCode === 107 || e.keyCode === 187 || e.keyCode === 188 || e.keyCode === 69 || e.keyCode === 190) {
             e.preventDefault()
         }
     }
 
     const disabledInputPrecio = (e) => {
-        if(e.keyCode === 109 || e.keyCode === 189 || e.keyCode === 107 || e.keyCode === 187 || e.keyCode === 188 || e.keyCode === 69) {
+        if (e.keyCode === 109 || e.keyCode === 189 || e.keyCode === 107 || e.keyCode === 187 || e.keyCode === 188 || e.keyCode === 69) {
             e.preventDefault()
         }
     }

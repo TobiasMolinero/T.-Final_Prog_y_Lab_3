@@ -10,6 +10,6 @@ ON ventas
 FOR EACH ROW
 BEGIN
 	UPDATE productos SET stock = productos.stock - NEW.cantidad
-    WHERE NEW.idProducto = productos.idProducto;
+	WHERE NEW.idProducto = productos.idProducto;
 END //
 DELIMITER ;

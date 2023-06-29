@@ -37,10 +37,10 @@ const MainVentas = () => {
               icon: 'success',
               title: 'Eliminado',
               text: 'El registro se eliminó con exito.',
-              confirmButtonColor: '#a5f063',
               showCloseButton: true,
               timer: 2000,
-              timerProgressBar: true
+              timerProgressBar: true,
+              showConfirmButton: false,
             })
             getAllVentas()
           }).catch((err) => {
@@ -64,6 +64,17 @@ const MainVentas = () => {
     <div className="container p-4 mb-5 main-ventas">
       <h1 className="titulo-ventas text-center">Ventas</h1>
       <div className="row">
+        {/* <div className="col-6 d-flex align-items-end">
+          <form className='text-center'>
+            <select className='form-select' id='selectV' defaultValue='selected'>
+              <option value="selected">Filtrar por:</option>
+              <option>Nro. Factura</option>
+              <option>Empleados</option>
+              <option>Clientes</option>
+              <option>Productos</option>
+            </select>
+          </form>
+        </div> */}
         <div className="col-12 d-flex justify-content-end">
           <Link to={agregarVenta}>
             <button className="btn btn-success btnAgregar" type="button"><i className="bi bi-plus-circle me-2"></i>Agregar Venta</button>

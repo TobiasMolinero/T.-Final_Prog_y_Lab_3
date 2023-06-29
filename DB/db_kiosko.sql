@@ -10,7 +10,7 @@ idProducto INT NOT NULL,
 fecha DATE NOT NULL,
 cantidad INT NOT NULL,
 total DECIMAL(10, 2) NOT NULL,
-borrar TINYINT(1) NOT NULL
+estado TINYINT(1) NOT NULL
 );
 
 CREATE TABLE Productos(
@@ -19,13 +19,13 @@ descripcion VARCHAR(50) NOT NULL,
 precio DECIMAL(10,2) NOT NULL,
 stock INT NOT NULL,
 idCategoria INT NOT NULL,
-borrar TINYINT(1) NOT NULL
+estado TINYINT(1) NOT NULL
 );
 
 CREATE TABLE Categorias_Productos(
 idCategoriaP INT PRIMARY KEY AUTO_INCREMENT,
 nombreCategoria VARCHAR(50) NOT NULL,
-borrar TINYINT(1) NOT NULL
+estado TINYINT(1) NOT NULL
 );
 
 CREATE TABLE Empleados(
@@ -34,13 +34,13 @@ nombreE VARCHAR(50) NOT NULL,
 apellidoE VARCHAR(50) NOT NULL,
 sueldo DECIMAL(10, 2) NOT NULL,
 idTurno INT NOT NULL,
-borrar TINYINT(1) NOT NULL
+estado TINYINT(1) NOT NULL
 );
 
 CREATE TABLE Turnos(
 id_turno INT PRIMARY KEY AUTO_INCREMENT,
 tipo_turno VARCHAR(50) NOT NULL,
-borrar TINYINT(1) NOT NULL
+estado TINYINT(1) NOT NULL
 );
 
 CREATE TABLE Clientes(
@@ -49,14 +49,14 @@ nombreC VARCHAR(50) NOT NULL,
 apellidoC VARCHAR(50) NOT NULL,
 telefono VARCHAR(50) NOT NULL,
 domicilio VARCHAR(50) NOT NULL,
-borrar TINYINT(1) NOT NULL
+estado TINYINT(1) NOT NULL
 );
 
 CREATE TABLE Usuarios(
 idUsuario INT PRIMARY KEY AUTO_INCREMENT,
 nombreUsuario VARCHAR(50) NOT NULL,
 contraseña VARCHAR(100) NOT NULL,
-borrar TINYINT(1) NOT NULL
+estado TINYINT(1) NOT NULL
 );
 
 ALTER TABLE Ventas
@@ -79,19 +79,30 @@ ALTER TABLE empleados
 ADD CONSTRAINT fk_empleados_turnos
 FOREIGN KEY (idTurno) REFERENCES turnos(id_turno);
 
-INSERT INTO Categorias_Productos(nombreCategoria, borrar) VALUES ('Bebidas', 0),('Snacks', 0),('Golosinas', 0),('Cigarrillos', 0),('Higiene Personal', 0);
+ALTER TABLE Ventas 
+ADD CHECK(cantidad >= 0);
+
+ALTER TABLE Productos
+ADD CHECK(stock >= 0);
+
+ALTER TABLE Productos
+ADD CHECK(precio > 0);
+
+ALTER TABLE Empleados
+ADD CHECK(sueldo > 0);
+
+INSERT INTO Categorias_Productos(nombreCategoria, estado) VALUES ('Bebidas', 1),('Snacks', 1),('Golosinas', 1),('Cigarrillos', 1),('Higiene Personal', 1);
 SELECT * FROM Categorias_Productos;
 
-INSERT INTO Usuarios(nombreUsuario, contraseña, borrar) VALUES ('TobiasMolinero', '123456', 0),
-('AlvaroLlovera', '654321', 0),('FacundoMajolli', 'abcde', 0);
+INSERT INTO Usuarios(nombreUsuario, contraseña, estado) VALUES ('TobiasMolinero', '123456', 1),
+('AlvaroLlovera', '654321', 1),('FacundoMajolli', 'abcde', 1);
 SELECT * FROM Usuarios;
 
-INSERT INTO Turnos(tipo_turno, borrar) VALUES('mañana', 0),('tarde', 0),('noche', 0);
+INSERT INTO Turnos(tipo_turno, estado) VALUES('mañana', 1),('tarde', 1),('noche', 1);
 SELECT * FROM Turnos;
 
 SET SQL_SAFE_UPDATES = 0;
 
-DROP VIEW IF EXISTS traer_ventas;
 
 
 

@@ -2,8 +2,12 @@
 
 } */
 
+*:not(h1){
+  font-family: 'Roboto', sans-serif;
+}
+
 Table{
-  box-shadow: 0px 0px 5px 1px black;
+  box-shadow: 0px 0px 4px 1px black;
 }
 
 .btnAgregar{

@@ -24,7 +24,7 @@ const crearVenta = (req, res) => {
         fecha: req.body.fecha,
         cantidad: req.body.cantidad,
         total: req.body.total,
-        borrar: req.body.borrar
+        estado: req.body.estado
     }
     ,(error, results) => {
         if(error) throw error
@@ -34,7 +34,7 @@ const crearVenta = (req, res) => {
 
 const editarVenta = (req, res) => {
     const id = req.params.id
-    const {nroFactura, idEmpleado, idCliente, idProducto, fecha, cantidad, total, borrar} = req.body
+    const {nroFactura, idEmpleado, idCliente, idProducto, fecha, cantidad, total, estado} = req.body
     connection.query(`UPDATE ventas SET nroFactura=${nroFactura},
                         idEmpleado=${idEmpleado},
                         idCliente=${idCliente},
@@ -42,7 +42,7 @@ const editarVenta = (req, res) => {
                         fecha='${fecha}',
                         cantidad=${cantidad},
                         total=${total},
-                        borrar=${borrar}
+                        estado=${estado}
                         WHERE idVenta = ${id}
     `, (error, results) => {
         if(error) throw error
@@ -52,7 +52,7 @@ const editarVenta = (req, res) => {
 
 const borrarVenta = (req, res) => {
     const id = req.params.id
-    connection.query(`UPDATE ventas SET borrar = 1 WHERE idVenta=${id}`, (error, results) => {
+    connection.query(`UPDATE ventas SET estado = 0 WHERE idVenta=${id}`, (error, results) => {
         if(error) throw error
         res.send(results)
     })
