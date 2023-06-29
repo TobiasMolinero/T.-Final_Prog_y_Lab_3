@@ -4,7 +4,8 @@ import { Table } from "react-bootstrap"
 import axios from 'axios'
 import Swal from "sweetalert2"
 import { useState, useEffect } from "react"
-import { categoriasProductos_URL, categoriasProductos_crear_URL, categoriasProductos_editar_URL, categoriasProductos_eliminar_URL } from "../constants/constants"
+import { Link } from "react-router-dom"
+import { productos, categoriasProductos_URL, categoriasProductos_crear_URL, categoriasProductos_editar_URL, categoriasProductos_eliminar_URL } from "../constants/constants"
 
 const MainCategorias = () => {
 
@@ -144,12 +145,14 @@ const MainCategorias = () => {
     return (
         <div className="container p-4 main-productos">
             <h1 className="titulo-productos text-center">Categorias</h1>
+            <div>
+                <Link to={productos}><i className="bi bi-arrow-left me-2"></i>Volver a Productos</Link>
+            </div>
             <div className="row">
                 <div className="col-6">
-                    <Table bordered hover striped className="table mt-4 text-center">
+                    <Table bordered hover striped className="table mt-2 text-center">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
                                 <th scope="col">Nombre Categoria</th>
                                 <th scope="col">Acciones</th>
                             </tr>
@@ -157,7 +160,6 @@ const MainCategorias = () => {
                         <tbody>
                             {categorias.length === 0 ? <tr><td colSpan={3}><h4>No hay categorias registradas</h4></td></tr> : categorias.map(categoria => 
                                 <tr key={categoria.idCategoriaP}>
-                                    <td>{categoria.idCategoriaP}</td>
                                     <td>{categoria.nombreCategoria}</td>
                                     <td>
                                         <div className="btn-group" role="group" aria-label="Basic mixed styles example">
@@ -170,7 +172,7 @@ const MainCategorias = () => {
                         </tbody>
                     </Table>
                 </div>
-                <div className="col-6 mt-4">
+                <div className="col-6 mt-2">
                     <h3 className="text-center">Agregar/Editar Categoria</h3>
                     <form className="form text-center mt-4">
                         <div className="d-flex flex-row justify-content-center">

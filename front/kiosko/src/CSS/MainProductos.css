@@ -1,5 +1,5 @@
 .main-productos{
-    min-height: 550px;
+    min-height: 500px;
 }
 
 .titulo-productos{
@@ -20,4 +20,9 @@
 
 .bi-eye{
     font-size: 18px;
+}
+
+.txtStock{
+    min-width: 10px;
+    max-width: 50px;
 }

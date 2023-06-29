@@ -11,6 +11,7 @@ import { Table } from 'react-bootstrap'
 const MainProductos = () => {
 
   const [productos, setProductos] = useState([])
+  const [stock, setStock] = useState(20)
 
   const getAllProducts = async() => {
     let response = await axios.get(productos_URL)
@@ -63,22 +64,11 @@ const MainProductos = () => {
   return (
     <div className="container p-4 main-productos">
       <h1 className="titulo-productos text-center">Productos</h1>
-      {/* <div className="row">
-        <div className="col-12 d-flex justify-content-start align-items-end">
-          <form className='text-center'>
-            <select className='form-select' defaultValue='selected'>
-              <option value="selected">Filtrar por:</option>
-              <option>Categoria</option>
-            </select>
-          </form>
-        </div>
-      </div> */}
       <div className="row">
         <div className="col-9">
           <Table striped bordered hover className="table mt-4 text-center">
             <thead>
               <tr>
-                <th scope="col">#</th>
                 <th scope="col">Descripción</th>
                 <th scope="col">Categoria</th>
                 <th scope="col">Precio</th>
@@ -89,7 +79,6 @@ const MainProductos = () => {
             <tbody>
               {productos.length === 0 ? <tr><td colSpan={6}><h4>No hay productos registrados</h4></td></tr> : productos.map(producto =>
                 <tr key={producto.idProducto}>
-                  <td>{producto.idProducto}</td>
                   <td>{producto.descripcion}</td>
                   <td>{producto.nombreCategoria}</td>
                   <td>$ {producto.precio}</td>
@@ -108,7 +97,7 @@ const MainProductos = () => {
           </Table>
         </div>
         <div className="col-3">
-          <div className="col-12 d-flex flex-column align-items-start gap-3 mt-4">
+          <div className="col-12 d-flex flex-column align-items-start gap-3 my-4">
             <Link to={agregarProducto}>
               <button className="btn btn-success btnAgregar" type="button"><i className="bi bi-plus-circle me-2"></i>Agregar Producto</button>
             </Link>
@@ -116,6 +105,21 @@ const MainProductos = () => {
               <button className='btn btn-secondary btnAgregar'><i className="bi bi-eye me-2"></i>Ver Categorias</button>
             </Link>
           </div>
+          {/* <hr />
+          <div>
+            <h5>Modificar stock</h5>
+            <form className='form d-flex flex-column align-items-start mt-3'>
+              <div className='d-flex gap-3'>
+                <button className='btn btn-secondary control-stock' type='button' onClick={() => setStock(stock - 1)}> - </button>
+                <input className='txtStock text-center' value={stock} type="number" onChange={(e) => {setStock(e.target.value)}} min={0} disabled/>
+                <button className='btn btn-secondary control-stock' type='button' onClick={() => setStock(stock + 1)}> + </button>
+              </div>
+              <div className='d-flex justify-content-center gap-2'>
+                <button type='submit' className='btn btn-success mt-3'>Aceptar</button>
+                <button type='button' className='btn btn-secondary mt-3'>Cancelar</button>
+              </div>
+            </form>
+          </div> */}
         </div>
       </div>
     </div>

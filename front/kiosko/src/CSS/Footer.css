@@ -1,4 +1,31 @@
 footer{
-    background-color: #000000;
-    color: white;
+    background-color: #2e2828;
+    color: #fcfcfc;
+    box-shadow: 0 0 6px 1px black;
+}
+
+footer h3 {
+    color: #a5f063;
+}
+
+.icons-redes{
+    font-size: 30px;
+    transition: 0.5s;
+}
+
+.icons-redes:hover{
+    color: #FF2E11;
+    cursor: pointer;
+}
+
+.derechos{
+    background-color: rgb(29, 29, 29);
+}
+
+.item-info-contacto{
+    list-style: none;
+}
+
+.item-info-contacto-icon{
+    font-size: 20px;
 }

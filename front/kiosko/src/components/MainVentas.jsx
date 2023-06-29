@@ -86,7 +86,6 @@ const MainVentas = () => {
           <Table striped bordered hover className="table mt-4 text-center">
             <thead>
               <tr>
-                <th scope="col">#</th>
                 <th scope="col">Nro. Factura</th>
                 <th scope="col">Empleado</th>
                 <th scope="col">Cliente</th>
@@ -100,7 +99,6 @@ const MainVentas = () => {
             <tbody>
               {ventas.length === 0 ? <tr><td colSpan={9}><h2>No hay ventas registradas</h2></td></tr> : ventas.map(venta => 
                 <tr key={venta.idVenta}>
-                  <td>{venta.idVenta}</td>
                   <td>{venta.nroFactura}</td>
                   <td>{venta.nombreE}{' '}{venta.apellidoE}</td>
                   <td>{venta.nombreC}{' '}{venta.apellidoC}</td>

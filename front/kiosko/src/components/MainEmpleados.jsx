@@ -67,7 +67,6 @@ const MainEmpleados = () => {
           <Table bordered hover striped className='table mt-4 text-center'>
             <thead>
               <tr>
-                <th scope='col'>#</th>
                 <th scope='col'>Nombre</th>
                 <th scope='col'>Apellido</th>
                 <th scope='col'>Sueldo</th>
@@ -78,7 +77,6 @@ const MainEmpleados = () => {
             <tbody>
               {empleados.length === 0 ? <tr><td colSpan={6}><h4>No hay empleados registrados</h4></td></tr> : empleados.map(empleado =>
                 <tr key={empleado.idEmpleado}>
-                  <td>{empleado.idEmpleado}</td>
                   <td>{empleado.nombreE}</td>
                   <td>{empleado.apellidoE}</td>
                   <td>$ {empleado.sueldo}</td>

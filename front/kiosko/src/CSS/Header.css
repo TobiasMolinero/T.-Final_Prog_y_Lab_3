@@ -1,14 +1,14 @@
 header{
     font-size: 1.4rem;
-    /* position: sticky;
+    position: sticky;
     top: 0;
-    z-index: 1; */
+    z-index: 1;
     /* border-bottom: 1px solid black; */
 }
 
 .header-active{
-    background-color: #a5f063;
-    /* background-color: transparent; */
+    background-color: #a5f063f8;
+    box-shadow: 0 0 6px 1px black;
     transition: 0.5s;
 }
 
@@ -19,6 +19,10 @@ header{
 
 .menu-header{
     flex-grow: 2;
+}
+
+.menu-usuario{
+    flex-grow: 1;
 }
 
 .navbar{
@@ -76,4 +80,26 @@ header{
 
 .cerrarSesion:active{
     background-color: #FF2E11;
+}
+
+.nav-icons{
+    margin-right: 10px;
+    width: 22px;
+}
+
+.bi-person-fill{
+    font-size: 23px;
+    align-self: center;
+}
+
+.bi-person-fill-gear{
+    font-size: 20px;
+}
+
+.bi-box-arrow-right{
+    font-size: 20px;
+}
+
+.cerrar-sesion:hover{
+    cursor: pointer;
 }

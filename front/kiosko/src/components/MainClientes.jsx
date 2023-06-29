@@ -67,7 +67,6 @@ const MainClientes = () => {
           <Table striped bordered hover className='table mt-4 text-center rounded'>
             <thead>
               <tr>
-                <th scope='col'>#</th>
                 <th scope='col'>Nombre</th>
                 <th scope='col'>Apellido</th>
                 <th scope='col'>Telefono</th>
@@ -78,7 +77,6 @@ const MainClientes = () => {
             <tbody>
               {clientes.length === 0 ? <tr><td colSpan={6}><h4>No hay clientes registrados</h4></td></tr> : clientes.map(cliente => 
                 <tr key={cliente.idCliente}>
-                  <td>{cliente.idCliente}</td>
                   <td>{cliente.nombreC}</td>
                   <td>{cliente.apellidoC}</td>
                   <td>{cliente.telefono}</td>

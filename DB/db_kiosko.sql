@@ -101,6 +101,8 @@ SELECT * FROM Usuarios;
 INSERT INTO Turnos(tipo_turno, estado) VALUES('mañana', 1),('tarde', 1),('noche', 1);
 SELECT * FROM Turnos;
 
+update turnos set tipo_turno = 'Noche' WHERE id_turno = 3;
+
 SET SQL_SAFE_UPDATES = 0;
 
 
