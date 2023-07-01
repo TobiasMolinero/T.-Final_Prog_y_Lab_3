@@ -5,6 +5,7 @@ import Productos from './pages/Productos'
 import Categorias from './pages/Categorias'
 import Empleados from './pages/Empleados'
 import Clientes from './pages/Clientes'
+import PerfilUsuario from './pages/PerfilUsuario'
 import AgregarVenta from './pages/AgregarVenta'
 import AgregarProducto from './pages/AgregarProducto'
 import AgregarEmpleado from './pages/AgregarEmpleado'
@@ -14,7 +15,7 @@ import EditarProducto from './pages/EditarProducto'
 import EditarEmpleado from './pages/EditarEmpleado'
 import EditarCliente from './pages/EditarCliente'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { login, home, ventas, productos, empleados, clientes, agregarVenta, agregarProducto, agregarEmpleado, agregarCliente, editarVenta, editarProducto, editarEmpleado, editarCliente, categorias } from './constants/constants'
+import { login, home, ventas, productos, empleados, clientes, agregarVenta, agregarProducto, agregarEmpleado, agregarCliente, editarVenta, editarProducto, editarEmpleado, editarCliente, categorias, usuario } from './constants/constants'
 import './App.css'
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route path={categorias} element={<Categorias/>}></Route>
         <Route path={empleados} element={<Empleados/>}></Route>
         <Route path={clientes} element={<Clientes/>}></Route>
+        <Route path={usuario} element={<PerfilUsuario/>}></Route>
         <Route path={agregarVenta} element={<AgregarVenta/>}></Route>
         <Route path={agregarProducto} element={<AgregarProducto/>}></Route>
         <Route path={agregarEmpleado} element={<AgregarEmpleado/>}></Route>

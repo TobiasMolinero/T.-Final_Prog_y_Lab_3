@@ -26,3 +26,7 @@
     min-width: 10px;
     max-width: 50px;
 }
+
+#selectCat{
+    overflow-y: scroll;
+}

@@ -13,7 +13,7 @@
     align-items: center;
     background-color: #a5f063;
     border-radius: 15px;
-    border: 1px solid black;
+    box-shadow: 0 0 5px 0 black;
 }
 
 .label-login{

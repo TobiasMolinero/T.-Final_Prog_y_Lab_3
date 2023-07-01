@@ -144,8 +144,8 @@ const MainCategorias = () => {
 
     return (
         <div className="container p-4 main-productos">
-            <h1 className="titulo-productos text-center">Categorias</h1>
-            <div>
+            <h1 className="titulo-productos text-center">Categorias Productos</h1>
+            <div className="mt-4">
                 <Link to={productos}><i className="bi bi-arrow-left me-2"></i>Volver a Productos</Link>
             </div>
             <div className="row">

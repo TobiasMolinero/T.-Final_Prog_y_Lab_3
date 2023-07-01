@@ -4,18 +4,51 @@ import '../CSS/MainProductos.css'
 import Swal from 'sweetalert2'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { productos_URL, productos_eliminar_URL, editarProducto, agregarProducto, categorias } from '../constants/constants'
+import { productos_URL, productos_eliminar_URL, editarProducto, agregarProducto, categorias, categoriasProductos_URL, categoriasProductos_filtrar_URL } from '../constants/constants'
 import { Link } from 'react-router-dom'
 import { Table } from 'react-bootstrap'
 
 const MainProductos = () => {
 
   const [productos, setProductos] = useState([])
-  const [stock, setStock] = useState(20)
+  const [categoriasP, setCategoriasP] = useState([])
+  const [filtro, setFiltro] = useState('selected')
+  const [valorFiltro, setValorFiltro] = useState('selected')
 
   const getAllProducts = async() => {
     let response = await axios.get(productos_URL)
     setProductos(response.data)
+  }
+
+  const getCategories = async() => {
+    let response = await axios.get(categoriasProductos_URL)
+    setCategoriasP(response.data)
+  }
+
+  const filtrarPorCategoria = async() => {
+    if(valorFiltro === 'selected'){
+      Swal.fire({
+        icon: 'warning',
+        text: 'Seleccione una categoria',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#a5f063',
+        timer: 2000,
+        timerProgressBar: true,
+      })
+    } else {
+      await axios.post(categoriasProductos_filtrar_URL, {
+        idCategoriaP: valorFiltro, 
+      })
+      .then((result) => {
+        setProductos(result.data)
+      }).catch((err) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'ERROR',
+          text: 'Lo siento... ocurrió un error inesperado'
+        })
+      });
+    }
   }
 
   const handleDeleteProduct = async(id) => {
@@ -59,14 +92,31 @@ const MainProductos = () => {
 
   useEffect(() => {
     getAllProducts()
+    getCategories()
   }, [])
 
   return (
     <div className="container p-4 main-productos">
       <h1 className="titulo-productos text-center">Productos</h1>
       <div className="row">
+        <div className="col-12 d-flex gap-2 mt-2">
+          <select defaultValue='selected' onChange={(e) => setFiltro(e.target.value)}>
+            <option value="selected">-- Filtrar por --</option>
+            <option value="categorias">Categorias</option>
+          </select>
+          <select defaultValue='selected' disabled={filtro === 'selected' ? true : false} onChange={(e) => {setValorFiltro(e.target.value)}}>
+            <option value="selected">-- Seleccione categoria --</option>
+            {categoriasP.map( categoria => 
+              <option key={categoria.idCategoriaP} value={categoria.idCategoriaP}>{categoria.nombreCategoria}</option>
+              )}
+          </select>
+          <button className='btn btn-secondary' onClick={filtrarPorCategoria} disabled={filtro === 'selected' ? true : false}>Filtrar</button>
+          <button className='btn btn-primary' onClick={getAllProducts}>Ver Todos</button>
+        </div>
+      </div>
+      <div className="row">
         <div className="col-9">
-          <Table striped bordered hover className="table mt-4 text-center">
+          <Table striped bordered hover className="table mt-2 text-center">
             <thead>
               <tr>
                 <th scope="col">Descripción</th>

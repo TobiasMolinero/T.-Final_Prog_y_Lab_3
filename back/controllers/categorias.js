@@ -1,3 +1,4 @@
+const { json } = require('body-parser')
 const {connection} = require('../database/config')
 
 const getCategories = (req, res) => {
@@ -44,4 +45,21 @@ const borrarCategoria = (req, res) => {
     })
 }
 
-module.exports = {getCategories, seleccionarCategoria, crearCategoria, editarCategoria, borrarCategoria}
+const filtrarCategoria = (req, res) => {
+    const {idCategoriaP} = req.body
+    connection.query(`SELECT P.idProducto, P.descripcion, P.precio, P.stock, CP.nombreCategoria FROM productos P
+                        INNER JOIN categorias_productos CP
+                        ON P.idCategoria = CP.idCategoriaP
+                        WHERE P.estado = 1 AND CP.idCategoriaP = ${idCategoriaP};
+    `, (error, results) => {
+        if(error) throw error
+        res.json(results)
+    })
+}
+
+// const comprobarProductos = (req, res) => {
+//     const {idCategoriaP} = req.body
+//     connection.query(`SELECT idCategoriaP FROM productos WHERE idCategoriaP = ${idCategoriaP} AND estado = 1`)
+// }
+
+module.exports = {getCategories, seleccionarCategoria, crearCategoria, editarCategoria, borrarCategoria, filtrarCategoria}

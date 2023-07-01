@@ -82,8 +82,12 @@ header{
     background-color: #FF2E11;
 }
 
+.bi-house-door-fill{
+    font-size: 23px;
+}
+
 .nav-icons{
-    margin-right: 10px;
+    margin-right: 5px;
     width: 22px;
 }
 

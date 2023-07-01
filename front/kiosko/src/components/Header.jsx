@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { Link, useNavigate } from 'react-router-dom'
-import { home, ventas, productos, empleados, clientes } from '../constants/constants'
+import { home, ventas, productos, empleados, clientes, usuario } from '../constants/constants'
 import brand from '../assets/brand-header.png'
 import ventasIcon from '../assets/ventas-nav.png'
 import productosIcon from '../assets/productos-nav.png'
@@ -13,7 +13,7 @@ import { useState } from 'react'
 const Header = () => {
 
   const navigate = useNavigate()
-  // const [header, setHeader] = useState(false)
+
 
   const handleCerrarSesion = () => {
     Swal.fire({
@@ -51,29 +51,20 @@ const Header = () => {
         <Link to={home}>
           <img src={brand} alt="logo" className='logo' />
         </Link>
-        <div className="text-center menu-header d-flex justify-content-start ms-5" id="navbarSupportedContent">
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <Link className="nav-link" aria-current="page" to={home}><i className="bi bi-house-door-fill me-1"></i>Inicio</Link>
-            </li>
-            <li className="nav-item dropdown">
-              <Link className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Menú
-              </Link>
-              <ul className="dropdown-menu">
-                <li><Link className="dropdown-item" to={ventas}><img src={ventasIcon} className='nav-icons'></img>Ventas</Link></li>
-                <li><Link className="dropdown-item" to={productos}><img src={productosIcon} className='nav-icons'></img>Productos</Link></li>
-                <li><Link className="dropdown-item" to={empleados}><img src={empleadosIcon} className='nav-icons'></img>Empleados</Link></li>
-                <li><Link className="dropdown-item" to={clientes}><img src={clientesIcon} className='nav-icons'></img>Clientes</Link></li>
-              </ul>
-            </li>
+        <div className= "menu-header d-flex justify-content-center ms-3" id="navbarSupportedContent">
+          <ul className="navbar-nav d-flex gap-3">
+            <li className="nav-item"><Link className="nav-link" aria-current="page" to={home}><i className="bi bi-house-door-fill me-1"></i>Inicio</Link></li>
+            <li className='nav-item'><Link className="nav-link" to={ventas}><img src={ventasIcon} className='nav-icons'></img>Ventas</Link></li>
+            <li className='nav-item'><Link className="nav-link" to={productos}><img src={productosIcon} className='nav-icons'></img>Productos</Link></li>
+            <li className='nav-item'><Link className="nav-link" to={empleados}><img src={empleadosIcon} className='nav-icons'></img>Empleados</Link></li>
+            <li className='nav-item'><Link className="nav-link" to={clientes}><img src={clientesIcon} className='nav-icons'></img>Clientes</Link></li>
           </ul>
         </div>
         <ul className="navbar-nav menu-usuario justify-content-around">
           <li className='nav-item dropdown d-flex flex-row '>
-            <a className='nav-link dropdown-toggle' role='button' data-bs-toggle="dropdown" aria-expanded="false"><i className="bi bi-person-fill me-2"></i>Perfil</a>
+            <a className='nav-link dropdown-toggle' role='button' data-bs-toggle="dropdown" aria-expanded="false"><i className="bi bi-person-fill me-2"></i>Usuario</a>
             <ul className='dropdown-menu'>
-              <li><Link className='dropdown-item'><i className="bi bi-person-fill-gear me-2"></i>Configuración</Link></li>
+              {/* <li><Link to={usuario} className='dropdown-item'><i className="bi bi-person-fill-gear me-2"></i>Configuración</Link></li> */}
               <li className='dropdown-item cerrar-sesion' onClick={handleCerrarSesion}><i className="bi bi-box-arrow-right me-2"></i>Cerrar Sesión</li>
             </ul>
           </li>

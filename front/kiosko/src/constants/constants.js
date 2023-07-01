@@ -6,6 +6,7 @@ export const productos = "/productos"
 export const categorias = '/productos/categorias/'
 export const empleados = "/empleados"
 export const clientes = "/clientes"
+export const usuario = "/usuario"
 export const agregarVenta = '/ventas/agregar/'
 export const agregarProducto = '/productos/agregar/'
 export const agregarEmpleado = '/empleados/agregar/'
@@ -27,6 +28,7 @@ export const productos_URL = 'http://localhost:3000/productos/'
 export const productos_crear_URL = 'http://localhost:3000/productos/crear/'
 export const productos_editar_URL = 'http://localhost:3000/productos/editar/'
 export const productos_eliminar_URL = 'http://localhost:3000/productos/eliminar/'
+export const productos_validarProducto_URL = 'http://localhost:3000/productos/validar/'
 
 // EMPLEADOS
 export const empleados_URL = 'http://localhost:3000/empleados/'
@@ -46,6 +48,7 @@ export const categoriasProductos_URL = 'http://localhost:3000/categorias/'
 export const categoriasProductos_crear_URL = 'http://localhost:3000/categorias/crear/'
 export const categoriasProductos_editar_URL = 'http://localhost:3000/categorias/editar/'
 export const categoriasProductos_eliminar_URL = 'http://localhost:3000/categorias/eliminar/'
+export const categoriasProductos_filtrar_URL = 'http://localhost:3000/categorias/filtrar/'
 
 // OTROS
 export const usuarios_URL = 'http://localhost:3000/usuarios/'

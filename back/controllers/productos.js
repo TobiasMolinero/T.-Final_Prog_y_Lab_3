@@ -54,5 +54,17 @@ const borrarProducto = (req, res) => {
     })
 } 
 
+const validarProducto = (req, res) => {
+    const {descripcion} = req.body
+    connection.query(`SELECT descripcion FROM productos WHERE descripcion = '${descripcion}' AND estado = 1`, (error, results) => {
+        if(error) throw error
+        if(results.length === 0){
+            res.json(0)
+        } else {
+            res.json(1)
+        }
+    })
+}
 
-module.exports = { mostrarProductos, crearProducto, borrarProducto, seleccionarProducto, editarProducto};
+
+module.exports = { mostrarProductos, crearProducto, borrarProducto, seleccionarProducto, editarProducto, validarProducto};

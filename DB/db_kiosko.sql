@@ -1,3 +1,5 @@
+DROP DATABASE db_kiosko;
+
 CREATE DATABASE db_kiosko;
 USE db_kiosko;  
 
@@ -98,14 +100,10 @@ INSERT INTO Usuarios(nombreUsuario, contraseña, estado) VALUES ('TobiasMolinero
 ('AlvaroLlovera', '654321', 1),('FacundoMajolli', 'abcde', 1);
 SELECT * FROM Usuarios;
 
-INSERT INTO Turnos(tipo_turno, estado) VALUES('mañana', 1),('tarde', 1),('noche', 1);
+INSERT INTO Turnos(tipo_turno, estado) VALUES('Mañana', 1),('Tarde', 1),('Noche', 1);
 SELECT * FROM Turnos;
 
-update turnos set tipo_turno = 'Noche' WHERE id_turno = 3;
-
 SET SQL_SAFE_UPDATES = 0;
-
-
 
 
 
