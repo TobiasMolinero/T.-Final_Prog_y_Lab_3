@@ -57,9 +57,4 @@ const filtrarCategoria = (req, res) => {
     })
 }
 
-// const comprobarProductos = (req, res) => {
-//     const {idCategoriaP} = req.body
-//     connection.query(`SELECT idCategoriaP FROM productos WHERE idCategoriaP = ${idCategoriaP} AND estado = 1`)
-// }
-
 module.exports = {getCategories, seleccionarCategoria, crearCategoria, editarCategoria, borrarCategoria, filtrarCategoria}

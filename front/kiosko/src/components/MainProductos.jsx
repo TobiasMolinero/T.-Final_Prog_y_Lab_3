@@ -155,21 +155,6 @@ const MainProductos = () => {
               <button className='btn btn-secondary btnAgregar'><i className="bi bi-eye me-2"></i>Ver Categorias</button>
             </Link>
           </div>
-          {/* <hr />
-          <div>
-            <h5>Modificar stock</h5>
-            <form className='form d-flex flex-column align-items-start mt-3'>
-              <div className='d-flex gap-3'>
-                <button className='btn btn-secondary control-stock' type='button' onClick={() => setStock(stock - 1)}> - </button>
-                <input className='txtStock text-center' value={stock} type="number" onChange={(e) => {setStock(e.target.value)}} min={0} disabled/>
-                <button className='btn btn-secondary control-stock' type='button' onClick={() => setStock(stock + 1)}> + </button>
-              </div>
-              <div className='d-flex justify-content-center gap-2'>
-                <button type='submit' className='btn btn-success mt-3'>Aceptar</button>
-                <button type='button' className='btn btn-secondary mt-3'>Cancelar</button>
-              </div>
-            </form>
-          </div> */}
         </div>
       </div>
     </div>

@@ -23,7 +23,6 @@ const MainLogin = () => {
       contraseña: contraseña
     })
     .then((result) => {
-      console.log(result)
       if(result.data === 0){
         Swal.fire({
           icon: 'error',
@@ -65,8 +64,6 @@ const MainLogin = () => {
           <img src={brand} className='brand mx-auto' alt="" />
         </div>
         <div className="row d-flex justify-content-center">
-          {/* <h1 className="text-center tituloMain">KIOSKO LA ESQUINA</h1> */}
-          {/* <h2 className="text-center subTituloMain">Sistema de gestión</h2> */}
           <div className="col-6 mt-4 p-4 login">
             <h2 className="mb-4 title-form">Iniciar Sesión</h2>
             <form id="formLogin" onSubmit={handleIngresar}>
