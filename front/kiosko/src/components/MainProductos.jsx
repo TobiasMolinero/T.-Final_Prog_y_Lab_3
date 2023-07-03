@@ -16,6 +16,8 @@ const MainProductos = () => {
   const [valorFiltro, setValorFiltro] = useState('selected')
 
   const getAllProducts = async() => {
+    setFiltro('selected')
+    setValorFiltro('selected')
     let response = await axios.get(productos_URL)
     setProductos(response.data)
   }
@@ -100,11 +102,11 @@ const MainProductos = () => {
       <h1 className="titulo-productos text-center">Productos</h1>
       <div className="row">
         <div className="col-12 d-flex gap-2 mt-2">
-          <select defaultValue='selected' onChange={(e) => setFiltro(e.target.value)}>
+          <select defaultValue='selected' value={filtro} onChange={(e) => setFiltro(e.target.value)}>
             <option value="selected">-- Filtrar por --</option>
             <option value="categorias">Categorias</option>
           </select>
-          <select defaultValue='selected' disabled={filtro === 'selected' ? true : false} onChange={(e) => {setValorFiltro(e.target.value)}}>
+          <select defaultValue='selected' value={valorFiltro} disabled={filtro === 'selected' ? true : false} onChange={(e) => {setValorFiltro(e.target.value)}}>
             <option value="selected">-- Seleccione categoria --</option>
             {categoriasP.map( categoria => 
               <option key={categoria.idCategoriaP} value={categoria.idCategoriaP}>{categoria.nombreCategoria}</option>
