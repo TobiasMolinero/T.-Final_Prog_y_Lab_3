@@ -77,30 +77,31 @@ const MainAgregarProducto = () => {
                                     allowEscapeKey: false,
                                     allowOutsideClick: false,
                                     allowEnterKey: false,
-                                }).then((result) => {
-                                    formAgregar.reset()
-                                    if (result.isConfirmed) {
-                                        Swal.fire({
-                                            icon: 'question',
-                                            text: '¿Desea registrar otro producto?',
-                                            showCloseButton: false,
-                                            confirmButtonText: 'Aceptar',
-                                            confirmButtonColor: '#a5f063',
-                                            showCancelButton: true,
-                                            cancelButtonText: 'cancelar',
-                                            cancelButtonColor: 'grey',
-                                            allowEscapeKey: false,
-                                            allowOutsideClick: false,
-                                            allowEnterKey: false,
-                                        }).then((result) => {
-                                            if (result.isDismissed) {
-                                                navigate(productos)
-                                            } else {
-                                                Swal.close
-                                            }
-                                        })
-                                    }
                                 })
+                                // .then((result) => {
+                                //     formAgregar.reset()
+                                //     if (result.isConfirmed) {
+                                //         Swal.fire({
+                                //             icon: 'question',
+                                //             text: '¿Desea registrar otro producto?',
+                                //             showCloseButton: false,
+                                //             confirmButtonText: 'Aceptar',
+                                //             confirmButtonColor: '#a5f063',
+                                //             showCancelButton: true,
+                                //             cancelButtonText: 'cancelar',
+                                //             cancelButtonColor: 'grey',
+                                //             allowEscapeKey: false,
+                                //             allowOutsideClick: false,
+                                //             allowEnterKey: false,
+                                //         }).then((result) => {
+                                //             if (result.isDismissed) {
+                                //                 navigate(productos)
+                                //             } else {
+                                //                 Swal.close
+                                //             }
+                                //         })
+                                //     }
+                                // })
                                 formAgregar.reset()
                             }).catch((err) => {
                                 Swal.fire({
@@ -140,8 +141,11 @@ const MainAgregarProducto = () => {
 
     return (
     <div className="container p-4 main-productos">
+        <h1 className="titulo-productos text-center">Agregar Producto</h1>
+        <div className="row mt-4">
+            <Link to={productos}><i className="bi bi-arrow-left ms-5"></i>Volver a Productos</Link>
+        </div>
         <div className="row justify-content-center">
-            <h1 className="titulo-productos text-center">Agregar Producto</h1>
             <div className="col-8 d-flex flex-column align-items-center mt-4 formA">
                 <form id="formAgregar" onSubmit={handleSaveProduct}>
                     <div className='mb-3'>

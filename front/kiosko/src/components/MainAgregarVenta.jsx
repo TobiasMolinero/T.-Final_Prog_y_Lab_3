@@ -74,34 +74,36 @@ const MainAgregarVenta = () => {
           showConfirmButton: true,
           confirmButtonColor: '#a5f063',
           confirmButtonText: 'Aceptar',
+          timer: 2000,
+          timerProgressBar: true,
           showCloseButton: false,
           allowEscapeKey: false,
           allowOutsideClick: false,
           allowEnterKey: false,
         }).then((result) => {
-          if(result.isConfirmed){
-            formAgregar.reset()
-            setTotal(undefined)
-            Swal.fire({
-              icon: 'question',
-              text: '¿Desea registrar otra venta?',
-              showCloseButton: false,
-              confirmButtonText: 'Aceptar',
-              confirmButtonColor: '#a5f063',
-              showCancelButton: true,
-              cancelButtonText: 'cancelar',
-              cancelButtonColor: 'grey',
-              allowEscapeKey: false,
-              allowOutsideClick: false,
-              allowEnterKey: false,
-            }).then((result) => {
-              if(result.isDismissed){
-                navigate(ventas)
-              } else {
-                Swal.close
-              }
-            })
-          }
+          // if(result.isConfirmed){
+          //   setTotal(undefined)
+          //   Swal.fire({
+          //     icon: 'question',
+          //     text: '¿Desea registrar otra venta?',
+          //     showCloseButton: false,
+          //     confirmButtonText: 'Aceptar',
+          //     confirmButtonColor: '#a5f063',
+          //     showCancelButton: true,
+          //     cancelButtonText: 'cancelar',
+          //     cancelButtonColor: 'grey',
+          //     allowEscapeKey: false,
+          //     allowOutsideClick: false,
+          //     allowEnterKey: false,
+          //   }).then((result) => {
+          //     if(result.isDismissed){
+          //       navigate(ventas)
+          //     } else {
+          //       Swal.close
+          //     }
+          //   })
+          // }
+          formAgregar.reset()
         })
       }).catch((err) => {
         Swal.fire({
@@ -137,8 +139,11 @@ const MainAgregarVenta = () => {
 
     return (
         <div className="container p-4 main-ventas">
+            <h1 className="titulo-ventas text-center">Agregar Venta</h1>
+            <div className="row mt-4">
+              <Link to={ventas}><i className="bi bi-arrow-left ms-5"></i>Volver a Ventas</Link>
+            </div>
             <div className="row justify-content-center">
-                <h1 className="titulo-ventas text-center">Agregar Venta</h1>
                 <div className="col-8 d-flex flex-column align-items-center mt-4 formA">
                     <form id="formAgregar" onSubmit={handleGuardarVenta}>
                         <div className='mb-3'>

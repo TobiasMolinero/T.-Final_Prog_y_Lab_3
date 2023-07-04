@@ -8,7 +8,7 @@ import { Link, useNavigate } from 'react-router-dom'
 
 const MainAgregarEmpleado = () => {
 
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
 
     const [turnos, setTurnos] = useState([])
 
@@ -49,8 +49,8 @@ const MainAgregarEmpleado = () => {
                     icon: 'success',
                     title: 'Guardado',
                     text: 'El registro del nuevo empleado se guardó con exito.',
-                    showConfirmButton: false,
-                    showCloseButton: false,
+                    confirmButtonColor: '#a5f063',
+                    confirmButtonText: 'Aceptar',
                     timer: 2000,
                     timerProgressBar: true,
                     allowEscapeKey: false,
@@ -58,9 +58,6 @@ const MainAgregarEmpleado = () => {
                     allowEnterKey: false,
                 })
                 formAgregar.reset()
-                setTimeout(() => {
-                    navigate(empleados)
-                }, 2015);
             }).catch((err) => {
                 Swal.fire({
                     icon: 'error',
@@ -87,8 +84,11 @@ const MainAgregarEmpleado = () => {
 
     return (
         <div className="container p-4 main-empleados">
+            <h1 className="titulo-empleados text-center">Agregar Empleado</h1>
+            <div className="row mt-4">
+                <Link to={empleados}><i className="bi bi-arrow-left ms-5"></i>Volver a Empleados</Link>
+            </div>
             <div className="row justify-content-center">
-                <h1 className="titulo-empleados text-center">Agregar Empleado</h1>
                 <div className="col-8 d-flex flex-column align-items-center mt-4 formA">
                     <form id="formAgregar" className="mt-3" onSubmit={handleGuardarEmpleado}>
                         <div className='mb-3'>
