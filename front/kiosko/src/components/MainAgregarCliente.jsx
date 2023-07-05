@@ -56,9 +56,6 @@ const MainAgregarCliente = () => {
     return (
         <div className="container p-4 main-clientes">
             <h1 className="titulo-clientes text-center">Agregar Cliente</h1>
-            <div className="row mt-4">
-                <Link to={clientes}><i className="bi bi-arrow-left ms-5"></i>Volver a Clientes</Link>
-            </div>
             <div className="row justify-content-center">
                 <div className="col-8 d-flex flex-column align-items-center mt-4 formA">
                     <form id="formAgregar" onSubmit={handleGuardarCliente}>

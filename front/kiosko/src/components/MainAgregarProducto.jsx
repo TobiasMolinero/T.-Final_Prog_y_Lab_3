@@ -142,9 +142,6 @@ const MainAgregarProducto = () => {
     return (
     <div className="container p-4 main-productos">
         <h1 className="titulo-productos text-center">Agregar Producto</h1>
-        <div className="row mt-4">
-            <Link to={productos}><i className="bi bi-arrow-left ms-5"></i>Volver a Productos</Link>
-        </div>
         <div className="row justify-content-center">
             <div className="col-8 d-flex flex-column align-items-center mt-4 formA">
                 <form id="formAgregar" onSubmit={handleSaveProduct}>

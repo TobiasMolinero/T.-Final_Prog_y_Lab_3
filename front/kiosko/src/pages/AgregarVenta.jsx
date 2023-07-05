@@ -1,5 +1,5 @@
 import Header from '../components/Header'
-import MainAgregarVenta from "../components/MainAgregarVenta"
+import MainAgregarVenta2 from "../components/MainAgregarVenta2"
 import Footer from '../components/Footer'
 
 
@@ -7,7 +7,7 @@ const AgregarVenta = () => {
   return (
     <>
         <Header/>
-        <MainAgregarVenta/>
+        <MainAgregarVenta2/>
         <Footer/>
     </>
   )

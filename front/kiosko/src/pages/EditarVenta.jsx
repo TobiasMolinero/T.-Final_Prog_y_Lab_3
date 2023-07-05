@@ -1,5 +1,5 @@
 import Header from "../components/Header"
-import MainEditarVenta from '../components/MainEditarVenta'
+import MainEditarVenta2 from '../components/MainEditarVenta2'
 import Footer from '../components/Footer'
 
 
@@ -7,7 +7,7 @@ const EditarVenta = () => {
   return (
     <>
       <Header/>
-      <MainEditarVenta/>
+      <MainEditarVenta2/>
       <Footer/>
     </>
   )

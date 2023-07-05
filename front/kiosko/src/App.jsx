@@ -14,8 +14,9 @@ import EditarVenta from './pages/EditarVenta'
 import EditarProducto from './pages/EditarProducto'
 import EditarEmpleado from './pages/EditarEmpleado'
 import EditarCliente from './pages/EditarCliente'
+import DetalleVenta from './pages/DetalleVenta'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { login, home, ventas, productos, empleados, clientes, agregarVenta, agregarProducto, agregarEmpleado, agregarCliente, editarVenta, editarProducto, editarEmpleado, editarCliente, categorias, usuario } from './constants/constants'
+import { login, home, ventas, productos, empleados, clientes,  agregarVenta, agregarProducto, agregarEmpleado, agregarCliente, editarVenta, editarProducto, editarEmpleado, editarCliente, categorias, usuario, detalleVenta } from './constants/constants'
 import './App.css'
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
         <Route path={editarProducto + ':id'} element={<EditarProducto/>}></Route>
         <Route path={editarEmpleado + ':id'} element={<EditarEmpleado/>}></Route>
         <Route path={editarCliente + ':id'} element={<EditarCliente/>}></Route>
+        <Route path={detalleVenta + ':id'} element={<DetalleVenta/>}></Route>
       </Routes>
     </BrowserRouter>
   )

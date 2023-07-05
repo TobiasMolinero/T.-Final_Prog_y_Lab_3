@@ -4,7 +4,7 @@ import '../CSS/MainVentas.css'
 import Swal from 'sweetalert2'
 import axios from 'axios'
 import { Table } from 'react-bootstrap'
-import { agregarVenta, editarVenta, ventas_URL, ventas_eliminar_URL } from '../constants/constants'
+import { agregarVenta, detalleVenta, editarVenta, ventas_URL, ventas_eliminar_URL } from '../constants/constants'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -38,7 +38,7 @@ const MainVentas = () => {
               title: 'Eliminado',
               text: 'El registro se eliminó con exito.',
               showCloseButton: true,
-              timer: 2000,
+              timer: 1500,
               timerProgressBar: true,
               showConfirmButton: false,
             })
@@ -63,37 +63,26 @@ const MainVentas = () => {
   return (
     <div className="container p-4 mb-5 main-ventas">
       <h1 className="titulo-ventas text-center">Ventas</h1>
-      <div className="row">
-        <div className="col-12 d-flex justify-content-end">
-          <Link to={agregarVenta}>
-            <button className="btn btn-success btnAgregar" type="button"><i className="bi bi-plus-circle me-2"></i>Agregar Venta</button>
-          </Link>
-        </div>
-      </div>
       <div className="row mb-5">
-        <div className="col-12">
+        <div className="col-9">
           <Table striped bordered hover className="table mt-4 text-center">
             <thead>
               <tr>
-                <th scope="col">Nro. Factura</th>
+                <th scope="col">#Factura</th>
                 <th scope="col">Empleado</th>
                 <th scope="col">Cliente</th>
-                <th scope="col">Producto</th>
-                <th scope="col">Fecha</th>
-                <th scope="col">Cantidad</th>
+                <th scope='col'>Detalles</th>
                 <th scope="col">Importe Total</th>
                 <th scope="col">Acciones</th>
               </tr>
             </thead>
             <tbody>
-              {ventas.length === 0 ? <tr><td colSpan={9}><h2>No hay ventas registradas</h2></td></tr> : ventas.map(venta => 
+              {ventas.length === 0 ? <tr><td colSpan={6}><h2>No hay ventas registradas</h2></td></tr> : ventas.map(venta => 
                 <tr key={venta.idVenta}>
                   <td>{venta.nroFactura}</td>
                   <td>{venta.nombreE}{' '}{venta.apellidoE}</td>
                   <td>{venta.nombreC}{' '}{venta.apellidoC}</td>
-                  <td>{venta.descripcion}</td>
-                  <td>{(venta.fecha).substring(0, 10)}</td>
-                  <td>{venta.cantidad}</td>
+                  <td><Link to={detalleVenta + venta.idVenta}>Ver detalle</Link></td>
                   <td>$ {venta.total}</td>
                   <td>
                     <div className="btn-group" role="group" aria-label="Basic mixed styles example">
@@ -107,6 +96,11 @@ const MainVentas = () => {
               )}
             </tbody>
           </Table>
+        </div>
+        <div className="col-3 d-flex justify-content-start mt-4">
+          <Link to={agregarVenta}>
+            <button className="btn btn-success btnAgregar" type="button"><i className="bi bi-plus-circle me-2"></i>Agregar Venta</button>
+          </Link>
         </div>
       </div>
     </div>

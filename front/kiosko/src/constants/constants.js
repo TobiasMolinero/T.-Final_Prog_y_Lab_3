@@ -15,6 +15,7 @@ export const editarVenta = '/ventas/editar/'
 export const editarProducto = '/productos/editar/'
 export const editarEmpleado = '/empleados/editar/'
 export const editarCliente = '/clientes/editar/'
+export const detalleVenta = '/ventas/detalle/'
 
 // ENDPOINTS
 // VENTAS
@@ -22,6 +23,18 @@ export const ventas_URL = 'http://localhost:3000/ventas/'
 export const ventas_crear_URL = 'http://localhost:3000/ventas/crear/'
 export const ventas_editar_URL = 'http://localhost:3000/ventas/editar/'
 export const ventas_eliminar_URL = 'http://localhost:3000/ventas/eliminar/'
+export const ventas_lastId_URL = 'http://localhost:3000/ventas/ultimoId/'
+export const ventas_traerventa_URL = 'http://localhost:3000/ventas/traerventa/'
+export const ventas_seleccionarventa_URL = 'http://localhost:3000/ventas/seleccionarventa/'
+
+//DETALLE VENTAS
+export const detalle_ventas_temp_URL = 'http://localhost:3000/detalleVentas/'
+export const detalle_ventas_crearT_URL = 'http://localhost:3000/detalleVentas/crearTemp'
+export const detalle_ventas_eliminarT_URL = 'http://localhost:3000/detalleVentas/eliminarTemp/'
+export const detalle_ventas_total_URL = 'http://localhost:3000/detalleVentas/totalTemp/'
+export const detalle_ventas_traerdetalle_URL = 'http://localhost:3000/detalleVentas/traerdetalle/'
+export const detalle_ventas_creartablaTemp_URL = 'http://localhost:3000/detalleVentas/creartablatemp/'
+
 
 // PRODUCTOS
 export const productos_URL = 'http://localhost:3000/productos/'

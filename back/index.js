@@ -7,6 +7,7 @@ const {connection} = require('./database/config')
 
 // ROUTES
 const ventas = require('./routes/ventas')
+const detalleVentas = require('./routes/detalleVentas')
 const productos = require('./routes/productos')
 const categorias = require('./routes/categorias')
 const empleados = require('./routes/empleados')
@@ -22,6 +23,7 @@ app.use(logger('dev'))
 app.use(cors())
 
 app.use('/', ventas)
+app.use('/', detalleVentas)
 app.use('/', productos)
 app.use('/', categorias)
 app.use('/', empleados)

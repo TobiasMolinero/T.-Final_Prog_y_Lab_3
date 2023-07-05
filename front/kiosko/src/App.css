@@ -37,6 +37,35 @@ select{
   font-size: 1.1rem;
 }
 
+.ticket{
+  border: 2px solid black;
+  padding: 15px
+}
+
+.ticket-info{
+  border-bottom: 2px dashed black;
+}
+
+.tabla-ticket{
+  box-shadow: none;
+}
+
+@media print{
+  body *{
+    visibility: hidden;
+  }
+
+  .ticket,
+  .ticket *{
+    visibility: visible;
+  }
+
+  .ticket{
+    position: absolute;
+    left: 0;
+    top: 0
+  }
+}
 /* #root {
   max-width: 1280px;
   margin: 0 auto;

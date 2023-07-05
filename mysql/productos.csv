@@ -1,0 +1,23 @@
+INSERT INTO productos(idProducto,descripcion,precio,stock,idCategoria,estado)
+VALUES
+(1,"Alfajor Aguila 70g",300.00,20,3,1),
+(2,"Papas Lays 500g",500.00,15,2,1),
+(3,"Coca-Cola 500ml",300.00,20,1,1),
+(4,"Pepsi 500ml",280.00,15,1,1),
+(5,"Block 38g",200.00,20,3,1),
+(6,"Cerveza Quilmes rubia 1lt",428.00,10,1,1),
+(7,"Conos 3D 400g ",300.00,15,2,1),
+(8,"Barra Cofler mani 100g",600.00,15,3,1),
+(9,"Coca-Cola 3lts",900.00,15,1,1),
+(10,"Pepsi 3lts",850.00,10,1,1),
+(11,"Cheetos 100g",400.00,15,2,1),
+(12,"Doritos 100g",500.00,15,2,1),
+(13,"Mani Pehuamar",320.00,15,2,1),
+(14,"Alfajor Fantoche triple negro",160.00,15,3,1),
+(15,"Marlboro Red 20",720.00,15,4,1),
+(16,"Phillip Morris 20",630.00,15,4,1),
+(17,"Pier 20",530.00,15,4,1),
+(18,"Camel 20",630.00,15,4,1),
+(19,"Galletas Pepitos 119g",300.00,20,3,1);
+
+select * from productos;
