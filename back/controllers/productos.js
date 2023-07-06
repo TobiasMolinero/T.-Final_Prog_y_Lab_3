@@ -30,6 +30,7 @@ const crearProducto = (req, res) => {
 
 const editarProducto = (req, res) => {
     const id = req.params.id
+    console.log(id)
     const {descripcion, precio, stock, idCategoria, estado} = req.body
     connection.query(`UPDATE productos SET descripcion = '${descripcion}', 
                         precio = ${precio}, 

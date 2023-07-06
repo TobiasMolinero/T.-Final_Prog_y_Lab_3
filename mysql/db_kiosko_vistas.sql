@@ -35,7 +35,7 @@ WHERE p.estado = 1;
 
 /* traer detalle venta definitivo */
 /*CREATE VIEW traer_detalle_def AS*/
-SELECT d.idVenta, p.descripcion, d.cantidad, d.precio, d.subTotal FROM detalle_ventas d
+/*SELECT d.idVenta, p.descripcion, d.cantidad, d.precio, d.subTotal FROM detalle_ventas d
 INNER JOIN productos p
 ON d.idProducto = p.idProducto
-WHERE d.estado = 1 AND d.idVenta = ?;
+WHERE d.estado = 1 AND d.idVenta = ?; */

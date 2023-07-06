@@ -21,14 +21,6 @@ const traerVenta = (req, res) => {
     })
 }
 
-// const seleccionarVenta = (req, res) => {
-//     const id = req.params.id
-//     connection.query(`SELECT * FROM ventas WHERE idVenta=${id}`, (error, results) => {
-//         if(error) throw error
-//         res.json(results)
-//     })
-// }
-
 const crearVenta = (req, res) => {
     connection.query(`INSERT INTO ventas SET ?`, 
     {
@@ -56,14 +48,27 @@ const crearVenta = (req, res) => {
 
 const editarVenta = (req, res) => {
     const id = req.params.id
-    const {nroFactura, idEmpleado, idCliente, total, estado} = req.body
+    const {nroFactura, idEmpleado, idCliente, total} = req.body
     connection.query(`UPDATE ventas SET nroFactura=${nroFactura},
                         idEmpleado=${idEmpleado},
                         idCliente=${idCliente},
-                        total=${total},
-                        estado=${estado}
+                        total=${total}
                         WHERE idVenta = ${id}
     `, (error, results) => {
+        if(error) throw error
+    })
+
+    connection.query(`UPDATE detalle_ventas SET estado = 0 WHERE idVenta = ${id}`, (error, results) => {
+        if (error) throw error
+    })
+
+    connection.query(`INSERT INTO detalle_ventas(idVenta, idProducto, cantidad, precio)
+                        SELECT idVenta, idProducto, cantidad, precio FROM detalle_ventas_temporal
+    `, (error, results) => {
+        if(error) throw error
+    })
+
+    connection.query('DELETE FROM detalle_ventas_temporal', (error, results) => {
         if(error) throw error
         res.send(results)
     })

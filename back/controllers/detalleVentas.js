@@ -1,4 +1,5 @@
 const {connection} = require('../database/config')
+const { connect } = require('../routes/ventas')
 
 const mostrarDetallesTemp = (req, res) => {
     connection.query('SELECT * FROM traer_detalle_temp ', (error, results) => {
@@ -40,7 +41,7 @@ const traerDetalleVenta = (req, res) => {
     connection.query(`SELECT d.idDetalleVenta, d.idVenta, p.descripcion, d.cantidad, d.precio, d.subTotal FROM detalle_ventas d
                         INNER JOIN productos p
                         ON d.idProducto = p.idProducto
-                        WHERE d.idVenta = ${id}
+                        WHERE d.idVenta = ${id} AND d.estado = 1
     `, (error, results) => {
         if (error) throw error
         res.json(results)
@@ -48,9 +49,15 @@ const traerDetalleVenta = (req, res) => {
 }
 
 const crearTablaTemp = (req, res) => {
+
     const id = req.params.id
+
+    connection.query(`DELETE FROM detalle_ventas_temporal WHERE idVenta = ${id}`, (error, results) => {
+        if (error) throw error
+    })
+
     connection.query(`INSERT INTO detalle_ventas_temporal (idVenta, idProducto, cantidad, precio)
-                        SELECT idVenta, idProducto, cantidad, precio FROM detalle_ventas WHERE idVenta = ${id}
+                        SELECT idVenta, idProducto, cantidad, precio FROM detalle_ventas WHERE idVenta = ${id} AND estado = 1
     `, (error, results) => {
         if(error) throw error
     })

@@ -1,10 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import { Link, useNavigate, useParams } from "react-router-dom"
-import { ventas, ventas_seleccionarventa_URL, detalle_ventas_temp_URL, detalle_ventas_crearT_URL, detalle_ventas_eliminarT_URL, detalle_ventas_total_URL, detalle_ventas_creartablaTemp_URL , productos_URL, empleados_URL, clientes_URL } from "../constants/constants"
+import { ventas, ventas_seleccionarventa_URL, ventas_editar_URL, detalle_ventas_temp_URL, detalle_ventas_crearT_URL, detalle_ventas_eliminarT_URL, detalle_ventas_total_URL, detalle_ventas_creartablaTemp_URL , productos_URL, empleados_URL, clientes_URL } from "../constants/constants"
 import { Table } from "react-bootstrap"
 import { useState, useEffect } from "react"
 import axios from "axios"
+import Swal from 'sweetalert2'
 
 const MainEditarVenta2 = () => {
 
@@ -31,12 +32,12 @@ const MainEditarVenta2 = () => {
         setNroFactura(response.data[0].nroFactura)
         setIdEmpleado(response.data[0].idEmpleado)
         setIdCliente(response.data[0].idCliente)
-        setTotal(response.data[0].total)
     }
 
     const crearTablaDetalleTemp = async() => {
         let response = await axios.get(detalle_ventas_creartablaTemp_URL  + id)
         setDetalles(response.data)
+        getTotal()
     }
 
     const getAllProductos = async () => {
@@ -89,7 +90,37 @@ const MainEditarVenta2 = () => {
             });
     }
 
-    const modificarVenta = async(id) => {} 
+    const modificarVenta = async() => {
+        await axios.put(ventas_editar_URL + id, {
+            nroFactura: nroFactura,
+            idEmpleado: idEmpleado,
+            idCliente: idCliente,
+            total: total
+        })
+        .then((result) => {
+            Swal.fire({
+                icon: 'success',
+                title: '¡Venta registrada!',
+                text: 'La venta se registró con exito',
+                showCloseButton: false,
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+            })
+            setTimeout(() => {
+                navigate(ventas)
+            }, 2015)
+        }).catch((err) => {
+            Swal.fire({
+                icon: 'error',
+                title: 'ERROR',
+                text: err,
+                showCloseButton: true,
+                timer: 2000,
+                timerProgressBar: true
+              })
+        });
+    } 
 
     const getPrecio = async () => {
         if (idProducto === undefined || idProducto === 0 || idProducto === 'selected') {
@@ -111,11 +142,10 @@ const MainEditarVenta2 = () => {
 
     useEffect(() => {
         getVenta()
-        // crearTablaDetalleTemp()
+        crearTablaDetalleTemp()
         getAllProductos()
         getAllEmpleados()
         getAllClientes()
-        getTotal()
     }, [])
 
     useEffect(() => {
@@ -139,7 +169,7 @@ const MainEditarVenta2 = () => {
                             <input type="number" min="1" max="9999" value={nroFactura} onChange={(e) => { setNroFactura(e.target.value) }} disabled/>
                         </div>
                         <div className="mt-3">
-                            <select className="form-select" defaultValue={idEmpleado} onChange={(e) => { setIdEmpleado(e.target.value) }}>
+                            <select className="form-select" value={idEmpleado} onChange={(e) => { setIdEmpleado(e.target.value) }}>
                                 {/* <option value="selected">-- Empleado --</option> */}
                                 {empleados.map(empleado =>
                                     <option key={empleado.idEmpleado} value={empleado.idEmpleado}>{empleado.nombreE}{' '}{empleado.apellidoE}</option>
@@ -147,7 +177,7 @@ const MainEditarVenta2 = () => {
                             </select>
                         </div>
                         <div className="mt-3">
-                            <select className="form-select" defaultValue={idCliente} onChange={(e) => { setIdCliente(e.target.value) }}>
+                            <select className="form-select" value={idCliente} onChange={(e) => { setIdCliente(e.target.value) }}>
                                 {/* <option value="selected">-- Cliente --</option> */}
                                 {clientes.map(cliente =>
                                     <option key={cliente.idCliente} value={cliente.idCliente}>{cliente.nombreC}{' '}{cliente.apellidoC}</option>
